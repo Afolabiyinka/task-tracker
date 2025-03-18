@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../Assets/android-chrome-512x512.png";
-import { Menu, CheckCheckIcon } from "lucide-react";
+
+import { CheckCheckIcon } from "lucide-react";
 
 const NavBar = () => {
   return (
