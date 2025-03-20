@@ -41,10 +41,24 @@ const NavBar = () => {
 
       {open && (
         <ul className="w-[90%] absolute top-24 left-3 bg-[#0D1B2A] text-white text-xl flex flex-col gap-6 justify-center p-4  px-6 rounded-2xl shadow-md z-50">
-          <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
-          <li>About</li>
-          <li>Reviews</li>
-          <li>Contact</li>
+          <Link to="/">
+            <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
+          </Link>
+          <Link to="/about">
+            {" "}
+            <li className="focus:underline-offset-1 cursor-pointer ">About</li>
+          </Link>
+          <Link>
+            <li className="focus:underline-offset-1 cursor-pointer ">
+              Reviews
+            </li>
+          </Link>
+          <Link>
+            {" "}
+            <li className="focus:underline-offset-1 cursor-pointer ">
+              Contact
+            </li>
+          </Link>
           <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out">
             Log In
           </button>
