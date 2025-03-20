@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { X, AlignRight } from "lucide-react";
 import { CheckCheckIcon } from "lucide-react";
 
 const NavBar = () => {
@@ -12,13 +12,23 @@ const NavBar = () => {
         <Link to="/">TASK MANAGER</Link>
       </span>
       <ul className="md:flex gap-12 font-semibold font-sans text-center text-xl text-white font-antialiased list-none hidden items-center">
-        <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
-        <li className="focus:underline-offset-1 cursor-pointer ">About</li>
-        <li className="focus:underline-offset-1 cursor-pointer ">Reviews</li>
-        <li className="focus:underline-offset-1 cursor-pointer ">Contact</li>
+        <Link to="/">
+          <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
+        </Link>
+        <Link to="/about">
+          {" "}
+          <li className="focus:underline-offset-1 cursor-pointer ">About</li>
+        </Link>
+        <Link>
+          <li className="focus:underline-offset-1 cursor-pointer ">Reviews</li>
+        </Link>
+        <Link>
+          {" "}
+          <li className="focus:underline-offset-1 cursor-pointer ">Contact</li>
+        </Link>
 
         <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out">
-          <Link to="/login">Log In </Link>
+          <Link to="/auth/login">Log In </Link>
         </button>
       </ul>
       {/* Mobile NavBar */}
@@ -26,11 +36,11 @@ const NavBar = () => {
         className="ease-in-out transition-all grid md:hidden"
         onClick={() => setOpen(!open)}
       >
-        {open ? <X size={40} /> : <Menu size={40} />}
+        {open ? <X size={40} /> : <AlignRight size={40} />}
       </button>
 
       {open && (
-        <ul className="w-[90%] absolute top-24 left-3 bg-[#0D1B2A] text-white text-2xl flex flex-col gap-6 justify-center p-4  px-6 rounded-2xl shadow-md z-50">
+        <ul className="w-[90%] absolute top-24 left-3 bg-[#0D1B2A] text-white text-xl flex flex-col gap-6 justify-center p-4  px-6 rounded-2xl shadow-md z-50">
           <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
           <li>About</li>
           <li>Reviews</li>

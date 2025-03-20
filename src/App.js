@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
+import About from "./Pages/About";
 import NavBar from "./Pages/NavBar";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import TaskHome from "./Pages/Tasks/TaskHome";
 function App() {
   return (
-    <div className="bg-black py-2  h-screen text-white">
+    <div className="bg-black py-2  h-full w-full text-white">
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/auth/login" element={<Login />} />
+        <Route path="/auth/register" element={<Register />} />
         <Route path="/tasks" element={<TaskHome />} />
       </Routes>
     </div>

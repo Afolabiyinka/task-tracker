@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UserRound, Mail, Lock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -64,12 +65,13 @@ const Login = () => {
             </span>
             <h1 className="text-xl">
               Dont Have an Account?{" "}
-              <Link to="/register" className="text-blue-700">
+              <Link to="/auth/register" className="text-blue-700">
                 SignUp
               </Link>
             </h1>
           </div>
         </div>
+        <ToastContainer />
       </form>
     </div>
   );

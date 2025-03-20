@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { UserRound, Mail, Lock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { toast, Slide, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -11,6 +12,18 @@ const Register = () => {
     e.preventDefault();
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+
+    toast.info("Validating Acoount!", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+    });
 
     let raw = JSON.stringify({
       username: username,
@@ -32,17 +45,16 @@ const Register = () => {
       .then((response) => response.text())
       .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
-    console.log("success");
   }
 
   return (
     <div className="flex justify-center items-center my-6">
       <form onSubmit={handleRegister}>
-        <div className="bg-gray-900 p-11 rounded-lg flex flex-col justify-center items-center gap-1 text-center">
+        <div className="bg-gray-900 p-8 rounded-lg flex flex-col justify-center items-center gap-1 text-center">
           <h1 className="flex gap-2 text-2xl">
             Create a new account <UserRound size={30} />
           </h1>
-          <div className="flex flex-col w-fit h-fit p-4 gap-5">
+          <div className="flex flex-col w-fit h-fit p-4 gap-4">
             <label
               htmlFor="username"
               className="flex gap-1 font-sans font-semibold"
@@ -100,15 +112,16 @@ const Register = () => {
             <span className="flex justify-center items-center">
               {" "}
               <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold">
-                Log In <ArrowRight />{" "}
+                Sign Up <ArrowRight />{" "}
               </button>
             </span>
             <h1 className="text-xl">
               Already have an Account?{" "}
-              <Link to="/login" className="text-blue-700">
+              <Link to="/auth/login" className="text-blue-700">
                 LogIn
               </Link>
             </h1>
+            <ToastContainer />
           </div>
         </div>
       </form>

@@ -4,6 +4,7 @@ import SplitText from "../Components/SplitText";
 import BlurText from "../Components/BlurText";
 import { ArrowRight } from "lucide-react";
 import heroAnimation from "../Assets/download.gif";
+
 const Home = () => {
   return (
     <div className="md:flex h-fit  bg-black text-white ">
@@ -29,7 +30,7 @@ const Home = () => {
 
         <span>
           <button className="bg-purple-700 px-6 py-3 rounded-lg flex gap-1 font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out ">
-            <Link to="/login" className="flex gap-1">
+            <Link to="/auth/login" className="flex gap-1">
               Get Started <ArrowRight />
             </Link>
           </button>
