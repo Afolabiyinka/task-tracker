@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { X, AlignRight } from "lucide-react";
 import { CheckCheckIcon } from "lucide-react";
+import CustomBtn from "../Components/CustomBtn";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -27,9 +28,7 @@ const NavBar = () => {
           <li className="focus:underline-offset-1 cursor-pointer ">Contact</li>
         </Link>
 
-        <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out">
-          <Link to="/auth/login">Log In </Link>
-        </button>
+        <CustomBtn text="Log In" />
       </ul>
       {/* Mobile NavBar */}
       <button
@@ -54,14 +53,11 @@ const NavBar = () => {
             </li>
           </Link>
           <Link>
-            {" "}
             <li className="focus:underline-offset-1 cursor-pointer ">
               Contact
             </li>
           </Link>
-          <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out">
-            Log In
-          </button>
+          <CustomBtn text="Log in" />
         </ul>
       )}
     </div>

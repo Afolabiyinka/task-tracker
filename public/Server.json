@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "review": "This app is fantastic! It keeps me organized and on track with my tasks. Highly recommended!",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "review": "A game-changer for productivity! I love the user-friendly interface and features.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "email": "michaelj@example.com",
+      "review": "The best task manager I've used so far. Simple, efficient, and super reliable.",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "name": "Emily Davis",
+      "email": "emilyd@example.com",
+      "review": "Great experience! The reminders are super helpful, and I feel more productive every day.",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "name": "Robert Brown",
+      "email": "robertb@example.com",
+      "review": "Clean design, easy to use, and keeps me focused. Highly recommended for anyone managing multiple projects.",
+      "rating": 4
+    },
+    {
+      "id": 6,
+      "name": "Sarah Wilson",
+      "email": "sarahw@example.com",
+      "review": "Amazing app! The dark mode and customization options make it a joy to use.",
+      "rating": 5
+    }
+  ]
+}

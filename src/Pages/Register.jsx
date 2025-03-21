@@ -2,6 +2,7 @@ import { useState } from "react";
 import { UserRound, Mail, Lock, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast, Slide, ToastContainer } from "react-toastify";
+import CustomBtn from "../Components/CustomBtn";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -110,10 +111,7 @@ const Register = () => {
               />
             </span>
             <span className="flex justify-center items-center">
-              {" "}
-              <button className="flex gap-1 px-12 py-2 bg-purple-700 rounded-lg justify-center items-center font-sans font-semibold">
-                Sign Up <ArrowRight />{" "}
-              </button>
+              <CustomBtn text="Sign In" />
             </span>
             <h1 className="text-xl">
               Already have an Account?{" "}

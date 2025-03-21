@@ -14,7 +14,6 @@ const About = () => {
           className="rounded-xl w-full h-auto"
         />
       </span>
-
       {/* Text Section */}
       <div className="w-full md:w-1/2 flex flex-col gap-4 justify-center items-center px-3">
         {/* Animated Text */}

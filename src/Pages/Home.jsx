@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SplitText from "../Components/SplitText";
 import BlurText from "../Components/BlurText";
-import { ArrowRight } from "lucide-react";
 import heroAnimation from "../Assets/download.gif";
+import CustomBtn from "../Components/CustomBtn";
 
 const Home = () => {
   return (
@@ -29,11 +28,8 @@ const Home = () => {
         />
 
         <span>
-          <button className="bg-purple-700 px-6 py-3 rounded-lg flex gap-1 font-sans font-semibold hover:bg-blue-600 transition-all duration-700 ease-in-out ">
-            <Link to="/auth/login" className="flex gap-1">
-              Get Started <ArrowRight />
-            </Link>
-          </button>
+          {" "}
+          <CustomBtn text="Get Started" linkpath="/auth/login" />
         </span>
       </div>
       <span className="w-[50%] h-[100%] object-fill px-4 py-4">
