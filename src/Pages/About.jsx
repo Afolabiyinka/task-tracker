@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactTyped } from "react-typed"; // Corrected import
-import BlurText from "../Components/BlurText";
+import BlurText from "../Components/Basic Components/BlurText";
 import taskHomeImage from "../Assets/ToDo Task List.gif";
 
 const About = () => {

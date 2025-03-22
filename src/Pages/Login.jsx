@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Checkbox, Typography, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { User, Eye, EyeOff } from "lucide-react";
@@ -15,6 +15,20 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false); // New state for "Remember Me"
+
+  // Load saved credentials when the component mounts
+  useEffect(() => {
+    const savedEmail = localStorage.getItem("savedEmail");
+    const savedPassword = localStorage.getItem("savedPassword");
+    const savedRememberMe = localStorage.getItem("rememberMe") === "true";
+
+    if (savedRememberMe) {
+      setEmail(savedEmail || "");
+      setPassword(savedPassword || "");
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -35,10 +49,23 @@ const Login = () => {
 
       if (response.ok) {
         toast.success("Login successful 🎉", { position: "top-center" });
-        localStorage.setItem("token", data.token);
+
+        if (rememberMe) {
+          // Save login details in localStorage
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("savedEmail", email);
+          localStorage.setItem("savedPassword", password);
+          localStorage.setItem("rememberMe", "true");
+        } else {
+          // Use sessionStorage for a temporary session
+          sessionStorage.setItem("token", data.token);
+          localStorage.removeItem("savedEmail");
+          localStorage.removeItem("savedPassword");
+          localStorage.setItem("rememberMe", "false");
+        }
 
         setTimeout(() => {
-          window.location.href = "/tasks"; // Redirect after successful login
+          window.location.href = "/tasks"; // Redirect to tasks page
         }, 2000);
       } else {
         toast.error(data.message || "Login failed!");
@@ -59,7 +86,7 @@ const Login = () => {
     >
       <ToastContainer position="top-right" autoClose={3000} />
       <motion.div
-        className="flex flex-col items-center justify-center h-screen dark"
+        className="flex flex-col items-center justify-center h-screen"
         variants={slideUpVariants}
       >
         <motion.div
@@ -107,7 +134,12 @@ const Login = () => {
               variants={slideUpVariants}
             >
               <label className="cursor-pointer flex" htmlFor="remember-me">
-                <Checkbox id="checkbox-link" className="mr-2 bg-gray-700" />
+                <Checkbox
+                  id="checkbox-link"
+                  className="mr-2 bg-gray-700"
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                />
                 <Typography className="cursor-pointer text-white">
                   Remember Me
                 </Typography>
