@@ -18,7 +18,7 @@ const Home = () => {
 
         <SplitText
           text="Simplify your to-do list, empowering you to turn aspirations into reality. Track tasks, prioritize effortlessly, and celebrate every milestone. Start achieving today."
-          className="text-2xl font-semibold font-mono"
+          className="text-2xl font-poppins"
           delay={3}
           animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
           animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}

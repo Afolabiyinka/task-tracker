@@ -84,7 +84,7 @@ export default function DarkNavbar() {
         </div>
         <Button
           size="md"
-          className="hidden border-white bg-white text-black hover:border-white hover:bg-white hover:text-black lg:ml-auto lg:inline-block"
+          className="hidden bg-purple-700 px-6 py-3 rounded-lg md:flex gap-1 font-sans font-semibold hover:bg-blue-600 transition-transform hover:scale-105 duration-700 ease-in-out lg:ml-auto lg:inline-block"
         >
           <Link to="/auth/login">Log In</Link>
         </Button>

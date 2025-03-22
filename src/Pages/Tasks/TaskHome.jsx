@@ -1,7 +1,7 @@
 import React from "react";
 
 const TaskHome = () => {
-  return <div>TaskHome</div>;
+  return <div className="h-[90vh]">TaskHome</div>;
 };
 
 export default TaskHome;

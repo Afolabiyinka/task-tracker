@@ -6,7 +6,11 @@ module.exports = {
     "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
+    },
   },
   plugins: [mtConfig],
 };

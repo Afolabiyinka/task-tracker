@@ -8,6 +8,7 @@ import Register from "./Pages/Register";
 import TaskHome from "./Pages/Tasks/TaskHome";
 import Reviews from "./Pages/Reviews";
 import ErrorSection from "./Pages/NotFound";
+import FooterDemo from "./Pages/Footer";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/tasks" element={<TaskHome />} />
           <Route path="*" element={<ErrorSection />} />
         </Routes>
+        <FooterDemo />
       </div>
     </ThemeProvider>
   );

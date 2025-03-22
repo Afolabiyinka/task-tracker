@@ -8,7 +8,7 @@ import {
 import StarRating from "./StarRating";
 function ReviewCard({ review }) {
   return (
-    <Card className="max-w-xs p-4 shadow-lg bg-gray-900 text-white">
+    <Card className="max-w-xs p-4 shadow-lg bg-gray-900 text-white hover:scale-105 transition-all duration-300">
       <CardBody>
         <Typography variant="h6" className="font-semibold font-mono text-xl">
           {review.name}
