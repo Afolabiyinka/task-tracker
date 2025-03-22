@@ -83,7 +83,7 @@ export default function DarkNavbar() {
           <NavList />
         </div>
         <Button
-          size="sm"
+          size="md"
           className="hidden border-white bg-white text-black hover:border-white hover:bg-white hover:text-black lg:ml-auto lg:inline-block"
         >
           <Link to="/auth/login">Log In</Link>

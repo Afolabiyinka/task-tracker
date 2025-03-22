@@ -1,76 +1,59 @@
-import { useState } from "react";
-import { UserRound, Mail, Lock } from "lucide-react";
-import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import CustomBtn from "../Components/CustomBtn";
+import React from "react";
+import { User } from "lucide-react";
 
 const Login = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-
-  function handleLogin(e) {
-    e.preventDefault();
-
-    console.log("success");
-  }
-
   return (
-    <div className="flex justify-center items-center my-6">
-      <form onSubmit={handleLogin}>
-        <div className="bg-gray-900 p-11 rounded-lg flex flex-col justify-center items-center gap-1 text-center">
-          <h1 className="flex gap-2 text-2xl">
-            Login into your account <UserRound size={30} />
-          </h1>
-          <div className="flex flex-col w-fit h-fit p-4 gap-5">
-            <label
-              htmlFor="email"
-              className="flex gap-1 font-sans font-semibold"
+    <div className="h-[90vh] flex items-center justify-center">
+      <div className="flex flex-col items-center justify-center h-screen dark">
+        <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
+          <h2 className="text-2xl font-bold font-mono text-gray-200 mb-4 flex gap-2 items-center justify-center">
+            Sign in to your account <User />
+          </h2>
+          <form className="flex flex-col">
+            <input
+              placeholder="Email address"
+              className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+              type="email"
+            />
+            <input
+              placeholder="Password"
+              className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+              type="password"
+            />
+            <div className="flex items-center justify-between flex-wrap">
+              <label
+                className="text-sm text-gray-200 cursor-pointer"
+                htmlFor="remember-me"
+              >
+                <input className="mr-2" id="remember-me" type="checkbox" />
+                Remember me
+              </label>
+              <a
+                className="text-sm text-blue-500 hover:underline mb-0.5"
+                href="#"
+              >
+                Forgot password?
+              </a>
+              <p className="text-white mt-4">
+                {" "}
+                Don't have an account?{" "}
+                <a
+                  className="text-sm text-blue-500 -200 hover:underline mt-4"
+                  href="#"
+                >
+                  Signup
+                </a>
+              </p>
+            </div>
+            <button
+              className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+              type="submit"
             >
-              <Mail /> Email
-            </label>
-            <span>
-              <input
-                type="text"
-                id="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                className="w-[17rem] h-[2.5rem] rounded-md p-2 text-black"
-              />
-            </span>
-            <label
-              htmlFor="password"
-              className="flex gap-1 font-sans font-semibold"
-            >
-              <Lock /> Password
-            </label>
-            <span>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                id="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                className="w-[17rem] h-[2.5rem] rounded-md p-2 text-black"
-              />
-            </span>
-            <span className="flex justify-center items-center">
-              <CustomBtn text="Log In" />
-            </span>
-            <h1 className="text-xl">
-              Dont Have an Account?{" "}
-              <Link to="/auth/register" className="text-blue-700">
-                SignUp
-              </Link>
-            </h1>
-          </div>
+              Login
+            </button>
+          </form>
         </div>
-        <ToastContainer />
-      </form>
+      </div>
     </div>
   );
 };
