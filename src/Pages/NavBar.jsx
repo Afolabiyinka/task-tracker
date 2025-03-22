@@ -14,6 +14,7 @@ import {
   Star as ReviewsIcon,
   MessageCircle as ContactIcon,
 } from "lucide-react";
+import tmLogo from "../Assets/favicon-32x32.png";
 import { CheckCheck } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -73,9 +74,9 @@ export default function DarkNavbar() {
       <div className="flex items-center text-white">
         <Link
           to="/"
-          className="ml-2 mr-2 flex items-center gap-1 text-xl font-semibold"
+          className="ml-2 mr-2 flex items-center gap-1  font-semibold"
         >
-          <CheckCheck />
+          <img src={tmLogo} />
           Task Manager
         </Link>
         <hr className="ml-1 mr-1.5 hidden h-5 w-px border-l border-t-0 border-surface/25 lg:block dark:border-surface" />
