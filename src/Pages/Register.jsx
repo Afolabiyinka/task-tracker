@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserRound, Mail, Lock, ArrowRight } from "lucide-react";
+import { UserRound, Mail, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast, Slide, ToastContainer } from "react-toastify";
 import CustomBtn from "../Components/CustomBtn";

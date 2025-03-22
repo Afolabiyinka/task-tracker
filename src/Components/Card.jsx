@@ -5,39 +5,10 @@ import StarRating from "./StarRating";
 const Card = ({ review }) => {
   return (
     <StyledWrapper>
-      <div className="task" draggable="true">
+      <div className="task">
         <div className="tags">
           <span className="tag">{review.name}</span>
-          <button className="options">
-            <svg
-              xmlSpace="preserve"
-              viewBox="0 0 41.915 41.916"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-              xmlns="http://www.w3.org/2000/svg"
-              id="Capa_1"
-              version="1.1"
-              fill="#000000"
-            >
-              <g strokeWidth={0} id="SVGRepo_bgCarrier" />
-              <g
-                strokeLinejoin="round"
-                strokeLinecap="round"
-                id="SVGRepo_tracerCarrier"
-              />
-              <g id="SVGRepo_iconCarrier">
-                {" "}
-                <g>
-                  {" "}
-                  <g>
-                    {" "}
-                    <path d="M11.214,20.956c0,3.091-2.509,5.589-5.607,5.589C2.51,26.544,0,24.046,0,20.956c0-3.082,2.511-5.585,5.607-5.585 C8.705,15.371,11.214,17.874,11.214,20.956z" />{" "}
-                    <path d="M26.564,20.956c0,3.091-2.509,5.589-5.606,5.589c-3.097,0-5.607-2.498-5.607-5.589c0-3.082,2.511-5.585,5.607-5.585 C24.056,15.371,26.564,17.874,26.564,20.956z" />{" "}
-                    <path d="M41.915,20.956c0,3.091-2.509,5.589-5.607,5.589c-3.097,0-5.606-2.498-5.606-5.589c0-3.082,2.511-5.585,5.606-5.585 C39.406,15.371,41.915,17.874,41.915,20.956z" />{" "}
-                  </g>{" "}
-                </g>{" "}
-              </g>
-            </svg>
-          </button>
+          <button className="options"></button>
         </div>
         <p>{review.review}</p>
         <StarRating rating={review.rating} />
@@ -58,7 +29,7 @@ const StyledWrapper = styled.div`
     margin-bottom: 1rem;
     // max-width: 350px;
     height: 230px;
-    width: 400px;
+    width: 350px;
     transition: 0.3s all;
   }
 
@@ -75,10 +46,12 @@ const StyledWrapper = styled.div`
 
   .tag {
     border-radius: 10px;
-    padding: 10px 60px;
-    font-size: 14px;
+    // padding: 10px 60px;
+    font-size: 1.3rem;
+    text-decoration: underline;
+    font-weight: bold;
     color: #ffffff;
-    background-color: #1389eb;
+    // background-color: #1389eb;
   }
 
   .tags {
@@ -105,6 +78,7 @@ const StyledWrapper = styled.div`
     width: 100%;
     color: #9fa4aa;
     font-size: 12px;
+    font-family: ui-monospace;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -139,9 +113,9 @@ const StyledWrapper = styled.div`
     padding: 2px;
   }
 
-  .viewer span svg {
-    stroke: #fff;
-  }
+  // .viewer span svg {
+  //   stroke: #fff;
+  // }
 `;
 
 export default Card;

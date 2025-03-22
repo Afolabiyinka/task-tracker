@@ -1,67 +1,116 @@
-import React, { useState } from "react";
+import * as React from "react";
+import {
+  Button,
+  IconButton,
+  Typography,
+  Collapse,
+  Navbar,
+} from "@material-tailwind/react";
+import {
+  Menu,
+  X as Xmark,
+  Home as HomeIcon,
+  FileText as AboutIcon,
+  Star as ReviewsIcon,
+  MessageCircle as ContactIcon,
+} from "lucide-react";
+import { CheckCheck } from "lucide-react";
 import { Link } from "react-router-dom";
-import { X, AlignRight } from "lucide-react";
-import { CheckCheckIcon } from "lucide-react";
-import CustomBtn from "../Components/CustomBtn";
 
-const NavBar = () => {
-  const [open, setOpen] = useState(false);
+const LINKS = [
+  {
+    icon: HomeIcon,
+    title: "Home",
+    href: "/",
+  },
+  {
+    icon: AboutIcon,
+    title: "About",
+    href: "/about",
+  },
+  {
+    icon: ReviewsIcon,
+    title: "Reviews",
+    href: "/reviews",
+  },
+  {
+    icon: ContactIcon,
+    title: "Contact",
+    href: "/contact",
+  },
+];
+
+function NavList() {
   return (
-    <div className="h-[10vh] bg-[#0D1B2A] flex justify-between px-6 mx-3 my-0 rounded-2xl items-center">
-      <span className="flex gap-1 justify-center items-center text-white text-xl font-bold">
-        <CheckCheckIcon size={50} color="white" />{" "}
-        <Link to="/">TASK MANAGER</Link>
-      </span>
-      <ul className="md:flex gap-12 font-semibold font-sans text-center text-xl text-white font-antialiased list-none hidden items-center">
-        <Link to="/">
-          <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
-        </Link>
-        <Link to="/about">
-          {" "}
-          <li className="focus:underline-offset-1 cursor-pointer ">About</li>
-        </Link>
-        <Link>
-          <li className="focus:underline-offset-1 cursor-pointer ">Reviews</li>
-        </Link>
-        <Link>
-          {" "}
-          <li className="focus:underline-offset-1 cursor-pointer ">Contact</li>
-        </Link>
-
-        <CustomBtn text="Log In" />
-      </ul>
-      {/* Mobile NavBar */}
-      <button
-        className="ease-in-out transition-all grid md:hidden"
-        onClick={() => setOpen(!open)}
-      >
-        {open ? <X size={40} /> : <AlignRight size={40} />}
-      </button>
-
-      {open && (
-        <ul className="w-[90%] absolute top-24 left-3 bg-[#0D1B2A] text-white text-xl flex flex-col gap-6 justify-center p-4  px-6 rounded-2xl shadow-md z-50">
-          <Link to="/">
-            <li className="focus:underline-offset-1 cursor-pointer ">Home</li>
+    <ul className="mt-4 flex flex-col gap-x-3 gap-y-1.5 lg:mt-0 lg:flex-row lg:items-center">
+      {LINKS.map(({ icon: Icon, title, href }) => (
+        <li key={title}>
+          <Link
+            to={href}
+            className="flex items-center gap-x-2 p-1 text-white hover:text-gray-300"
+          >
+            <Icon className="h-4 w-4" />
+            <Typography type="small">{title}</Typography>
           </Link>
-          <Link to="/about">
-            {" "}
-            <li className="focus:underline-offset-1 cursor-pointer ">About</li>
-          </Link>
-          <Link>
-            <li className="focus:underline-offset-1 cursor-pointer ">
-              Reviews
-            </li>
-          </Link>
-          <Link>
-            <li className="focus:underline-offset-1 cursor-pointer ">
-              Contact
-            </li>
-          </Link>
-          <CustomBtn text="Log in" />
-        </ul>
-      )}
-    </div>
+        </li>
+      ))}
+    </ul>
   );
-};
+}
 
-export default NavBar;
+export default function DarkNavbar() {
+  const [openNav, setOpenNav] = React.useState(false);
+
+  React.useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+  }, []);
+
+  return (
+    <Navbar className="mx-auto w-full max-w-screen-xl bg-black dark:bg-surface-dark">
+      <div className="flex items-center text-white">
+        <Link
+          to="/"
+          className="ml-2 mr-2 flex items-center gap-1 text-xl font-semibold"
+        >
+          <CheckCheck />
+          Task Manager
+        </Link>
+        <hr className="ml-1 mr-1.5 hidden h-5 w-px border-l border-t-0 border-surface/25 lg:block dark:border-surface" />
+        <div className="hidden lg:block">
+          <NavList />
+        </div>
+        <Button
+          size="sm"
+          className="hidden border-white bg-white text-black hover:border-white hover:bg-white hover:text-black lg:ml-auto lg:inline-block"
+        >
+          <Link to="/auth/login">Log In</Link>
+        </Button>
+        <IconButton
+          size="sm"
+          color="secondary"
+          onClick={() => setOpenNav(!openNav)}
+          className="ml-auto grid lg:hidden"
+        >
+          {openNav ? (
+            <Xmark className="h-4 w-4" />
+          ) : (
+            <Menu className="h-4 w-4" />
+          )}
+        </IconButton>
+      </div>
+      <Collapse open={openNav}>
+        <NavList />
+        <Button
+          size="sm"
+          isFullWidth
+          className="mt-4 border-white bg-white text-black hover:border-white hover:bg-white hover:text-black"
+        >
+          <Link to="/auth/login">Log In</Link>
+        </Button>
+      </Collapse>
+    </Navbar>
+  );
+}
