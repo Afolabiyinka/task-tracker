@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="dot-spinner">
+      <div className="dot-spinner text-white">
         <div className="dot-spinner__dot" />
         <div className="dot-spinner__dot" />
         <div className="dot-spinner__dot" />
@@ -29,6 +29,7 @@ const StyledWrapper = styled.div`
     justify-content: flex-start;
     height: var(--uib-size);
     width: var(--uib-size);
+    color: white;
   }
 
   .dot-spinner__dot {
@@ -40,6 +41,7 @@ const StyledWrapper = styled.div`
     justify-content: flex-start;
     height: 100%;
     width: 100%;
+    color: white;
   }
 
   .dot-spinner__dot::before {

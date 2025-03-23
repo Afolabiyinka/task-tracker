@@ -20,7 +20,7 @@ function ErrorSection() {
           color="blue-gray"
           className="mt-6 !text-3xl font-bold !leading-snug md:!text-4xl"
         >
-          Error 404 <br /> Something went wrong.
+          Error 404 <br /> Page not Found!
         </Typography>
         <Typography className="mt-4 mb-10 text-lg text-gray-500 md:max-w-md">
           Don&apos;t worry, our team is already on it. Please refresh the page
