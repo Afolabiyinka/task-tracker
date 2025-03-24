@@ -15,6 +15,8 @@ import Contact from "./Pages/Contact";
 
 function App() {
   const location = useLocation();
+
+  // Dynamically set page titles
   useEffect(() => {
     const titles = {
       "/": "TaskMaster",
@@ -29,10 +31,15 @@ function App() {
     document.title = titles[location.pathname] || "TaskMaster";
   }, [location]);
 
+  // Hide Navbar on the "/tasks" page
+  const hideNavbarRoutes = ["/tasks"];
+
   return (
     <ThemeProvider>
       <div className="bg-black py-2 text-white">
-        <DarkNavbar />
+        {/* Conditionally render Navbar */}
+        {!hideNavbarRoutes.includes(location.pathname) && <DarkNavbar />}
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -43,6 +50,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<ErrorSection />} />
         </Routes>
+
         <FooterDemo />
       </div>
     </ThemeProvider>

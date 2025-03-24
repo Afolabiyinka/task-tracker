@@ -35,6 +35,7 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok) {
+        localStorage.setItem("username", username);
         toast.success("Registration Successful!", { position: "top-center" });
         setTimeout(() => {
           window.location.href = "/auth/login"; // Redirect to login

@@ -4,7 +4,7 @@ import SplitText from "../Components/Basic Components/SplitText";
 import { Smile } from "lucide-react";
 const Contact = () => {
   return (
-    <div className="h-[90vh] flex flex-col justify-center items-center gap-2">
+    <div className="h-[90vh] w-[100%] px-3 flex flex-col justify-center items-center gap-2">
       <SplitText
         text="Help us improve! Share your thoughts with us."
         className="text-3xl font-poppins  text-center"

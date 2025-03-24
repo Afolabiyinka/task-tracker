@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Checkbox, Typography, Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Checkbox, Button } from "@material-tailwind/react";
+import { Link, useNavigate } from "react-router-dom";
 import { User, Eye, EyeOff } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import GoogleBtn from "./GoogleLogin";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -12,13 +13,22 @@ const slideUpVariants = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false); // New state for "Remember Me"
+  const [rememberMe, setRememberMe] = useState(false);
 
-  // Load saved credentials when the component mounts
+  // Check if a Google user is already stored
   useEffect(() => {
+    const googleUser = localStorage.getItem("googleUser");
+    if (googleUser) {
+      toast.success("Google login detected! Redirecting...", {
+        position: "top-center",
+      });
+      setTimeout(() => navigate("/tasks"), 2000);
+    }
+
     const savedEmail = localStorage.getItem("savedEmail");
     const savedPassword = localStorage.getItem("savedPassword");
     const savedRememberMe = localStorage.getItem("rememberMe") === "true";
@@ -28,11 +38,10 @@ const Login = () => {
       setPassword(savedPassword || "");
       setRememberMe(true);
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     const userCredentials = { email, password };
 
     try {
@@ -51,24 +60,22 @@ const Login = () => {
         toast.success("Login successful 🎉", { position: "top-center" });
 
         if (rememberMe) {
-          // Save login details in localStorage
           localStorage.setItem("token", data.token);
           localStorage.setItem("savedEmail", email);
           localStorage.setItem("savedPassword", password);
           localStorage.setItem("rememberMe", "true");
         } else {
-          // Use sessionStorage for a temporary session
           sessionStorage.setItem("token", data.token);
           localStorage.removeItem("savedEmail");
           localStorage.removeItem("savedPassword");
           localStorage.setItem("rememberMe", "false");
         }
 
-        setTimeout(() => {
-          window.location.href = "/tasks"; // Redirect to tasks page
-        }, 2000);
+        setTimeout(() => navigate("/tasks"), 2000);
       } else {
-        toast.error(data.message || "Login failed!");
+        toast.error(
+          data.message || "Login failed! Please check your credentials."
+        );
       }
     } catch (err) {
       console.error("Error:", err);
@@ -80,42 +87,46 @@ const Login = () => {
 
   return (
     <motion.div
-      className="h-[90vh] flex items-center justify-center"
+      className="h-screen flex items-center justify-center bg-gray-900"
       initial="hidden"
       animate="visible"
     >
       <ToastContainer position="top-right" autoClose={3000} />
       <motion.div
-        className="flex flex-col items-center justify-center h-screen"
+        className="flex flex-col items-center justify-center"
         variants={slideUpVariants}
       >
         <motion.div
-          className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6"
+          className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-8"
           variants={slideUpVariants}
         >
           <motion.h2
-            className="text-2xl font-bold font-mono text-gray-200 mb-4 flex gap-2 items-center justify-center"
+            className="text-2xl font-semibold text-gray-200 mb-6 flex gap-2 items-center justify-center"
             variants={slideUpVariants}
           >
-            Sign in to your account <User size={40} />
+            Sign in to your account <User size={32} />
           </motion.h2>
+
           <motion.form
-            className="flex flex-col"
+            className="space-y-5"
             onSubmit={handleLogin}
             variants={slideUpVariants}
           >
+            {/* Email Input */}
             <motion.input
               placeholder="Email address"
-              className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-gray-700 text-gray-200 border-0 rounded-md p-3 focus:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               variants={slideUpVariants}
             />
+
+            {/* Password Input */}
             <motion.div className="relative" variants={slideUpVariants}>
               <motion.input
                 placeholder="Password"
-                className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 w-full pr-10"
+                className="w-full bg-gray-700 text-gray-200 border-0 rounded-md p-3 focus:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -123,48 +134,57 @@ const Login = () => {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-2 flex items-center text-gray-400 hover:text-gray-200"
+                className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-200"
                 onClick={() => setShowPassword(!showPassword)}
               >
-                {showPassword ? <EyeOff size={25} /> : <Eye size={25} />}
+                {showPassword ? <EyeOff size={24} /> : <Eye size={24} />}
               </button>
             </motion.div>
+
+            {/* Remember Me & Forgot Password */}
             <motion.div
-              className="flex items-center justify-between flex-wrap"
+              className="flex items-center justify-between text-gray-400 text-sm"
               variants={slideUpVariants}
             >
-              <label className="cursor-pointer flex" htmlFor="remember-me">
+              <label className="flex items-center cursor-pointer">
                 <Checkbox
-                  id="checkbox-link"
+                  id="remember-me"
                   className="mr-2 bg-gray-700"
                   checked={rememberMe}
                   onChange={() => setRememberMe(!rememberMe)}
                 />
-                <Typography className="cursor-pointer text-white">
-                  Remember Me
-                </Typography>
+                Remember Me
               </label>
               <a className="text-blue-500 hover:underline" href="#">
                 Forgot password?
               </a>
-              <p className="text-white mt-4 flex gap-1">
-                Don't have an account?
-                <Link
-                  to="/auth/register"
-                  className="text-blue-500 hover:underline"
-                >
-                  Sign up
-                </Link>
-              </p>
             </motion.div>
+
+            {/* Login Button */}
             <motion.div variants={slideUpVariants}>
               <Button
-                className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600"
+                className="w-full bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-3 rounded-md hover:bg-indigo-600 transition duration-200"
                 type="submit"
               >
                 Login
               </Button>
             </motion.div>
+
+            {/* Google Login */}
+            <motion.div variants={slideUpVariants} className="mt-3">
+              <GoogleBtn />
+            </motion.div>
+
+            {/* Signup Link */}
+            <p className="text-gray-400 text-sm text-center mt-4">
+              Don't have an account?
+              <Link
+                to="/auth/register"
+                className="text-blue-500 hover:underline ml-1"
+              >
+                Sign up
+              </Link>
+            </p>
           </motion.form>
         </motion.div>
       </motion.div>

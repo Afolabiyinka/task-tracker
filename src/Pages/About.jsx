@@ -5,7 +5,7 @@ import taskHomeImage from "../Assets/ToDo Task List.gif";
 
 const About = () => {
   return (
-    <div className="h-fit flex flex-col md:flex-row px-4 py-6 justify-center items-center gap-6">
+    <div className="h-fit flex  w-[100%]flex-col md:flex-row px-4 py-6 justify-center items-center gap-6">
       {/* Image Section */}
       <span className="w-full md:w-1/2 px-4 py-4">
         <img

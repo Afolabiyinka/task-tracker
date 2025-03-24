@@ -1,0 +1,31 @@
+/* Apply bg-blue-950 to the calendar */
+.custom-calendar .react-calendar {
+  background-color: #1e3a8a; /* Tailwind bg-blue-950 */
+  border: none;
+  border-radius: 12px;
+  color: white;
+}
+
+/* Change text color */
+.custom-calendar .react-calendar__tile {
+  color: white;
+}
+
+/* Highlight selected date */
+.custom-calendar .react-calendar__tile--active {
+  background-color: #3b82f6; /* Tailwind blue-500 */
+  color: white;
+  border-radius: 8px;
+}
+
+/* Change navigation buttons */
+.custom-calendar .react-calendar__navigation button {
+  color: white;
+}
+
+/* Remove the dotted underline from weekdays */
+.custom-calendar .react-calendar__month-view__weekdays {
+  text-decoration: none !important;
+  border-bottom: none !important; /* Removes any underline */
+  color: white;
+}
