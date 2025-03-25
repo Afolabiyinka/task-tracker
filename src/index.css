@@ -4,6 +4,7 @@
 
 * {
   scroll-behavior: smooth;
+  transition: all 0.8s;
 }
 ::-webkit-scrollbar {
   width: 12px;
@@ -29,4 +30,28 @@
 
 ::-webkit-scrollbar-vertical {
   width: 10px;
+}
+/* Global CSS or your component's CSS file */
+input::placeholder {
+  color: white;
+}
+
+input::-webkit-input-placeholder {
+  /* Chrome, Safari, Opera */
+  color: white;
+}
+
+input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: white;
+}
+
+input:-ms-input-placeholder {
+  /* IE 10+ */
+  color: white;
+}
+
+input:-moz-placeholder {
+  /* Firefox 4-18 */
+  color: white;
 }

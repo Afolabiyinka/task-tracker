@@ -36,7 +36,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="bg-black py-2 text-white">
+      <div className="bg-black py-2 text-white h-[100%] w-[100%]">
         {/* Conditionally render Navbar */}
         {!hideNavbarRoutes.includes(location.pathname) && <DarkNavbar />}
 
