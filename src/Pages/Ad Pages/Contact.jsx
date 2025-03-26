@@ -1,7 +1,7 @@
 import React from "react";
-import Form from "../Components/Basic Components/ContactUs";
-import SplitText from "../Components/Basic Components/SplitText";
-import { Smile } from "lucide-react";
+import Form from "../../Components/Basic Components/ContactUs";
+import SplitText from "../../Components/Basic Components/SplitText";
+
 const Contact = () => {
   return (
     <div className="h-[90vh] w-[100%] px-3 flex flex-col justify-center items-center gap-2">

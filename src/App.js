@@ -1,37 +1,25 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
-import DarkNavbar from "./Pages/NavBar";
-import Home from "./Pages/Home";
-import About from "./Pages/About";
-import Login from "./Pages/Login";
-import Register from "./Pages/Register";
-import TaskHome from "./Pages/Tasks/TaskHome";
-import Reviews from "./Pages/Reviews";
-import ErrorSection from "./Pages/NotFound";
-import FooterDemo from "./Pages/Footer";
-import Contact from "./Pages/Contact";
+
+//importing our stuff
+import DarkNavbar from "./Pages/Ad Pages/NavBar";
+import FooterDemo from "./Pages/Ad Pages/Footer";
+import { Loader } from "lucide-react";
+
+// Lazy Loading our pages
+const Home = lazy(() => import("./Pages/Ad Pages/Home"));
+const About = lazy(() => import("./Pages/Ad Pages/About"));
+const Login = lazy(() => import("./Pages/Ad Pages/Login"));
+const Register = lazy(() => import("./Pages/Ad Pages/Register"));
+const Reviews = lazy(() => import("./Pages/Ad Pages/Reviews"));
+const Contact = lazy(() => import("./Pages/Ad Pages/Contact"));
+const ErrorSection = lazy(() => import("./Pages/Ad Pages/NotFound"));
+const TaskHome = lazy(() => import("./Pages/Tasks/TaskHome"));
 
 function App() {
-  const location = useLocation();
-
-  // Dynamically set page titles
-  useEffect(() => {
-    const titles = {
-      "/": "TaskMaster",
-      "/about": "About",
-      "/auth/login": "Login",
-      "/auth/register": "Register",
-      "/tasks": "Tasks",
-      "/reviews": "Reviews",
-      "/contact": "Contact Us",
-    };
-
-    document.title = titles[location.pathname] || "TaskMaster";
-  }, [location]);
-
   // Hide Navbar on the "/tasks" page
+  const location = useLocation();
   const hideNavbarRoutes = ["/tasks"];
 
   return (
@@ -39,17 +27,18 @@ function App() {
       <div className="bg-black py-2 text-white h-[100%] w-[100%]">
         {/* Conditionally render Navbar */}
         {!hideNavbarRoutes.includes(location.pathname) && <DarkNavbar />}
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/register" element={<Register />} />
-          <Route path="/tasks" element={<TaskHome />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<ErrorSection />} />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/auth/login" element={<Login />} />
+            <Route path="/auth/register" element={<Register />} />
+            <Route path="/tasks" element={<TaskHome />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<ErrorSection />} />
+          </Routes>
+        </Suspense>
 
         <FooterDemo />
       </div>

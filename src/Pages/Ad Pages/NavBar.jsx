@@ -14,7 +14,7 @@ import {
   Star as ReviewsIcon,
   MessageCircle as ContactIcon,
 } from "lucide-react";
-import tmLogo from "../Assets/favicon-32x32.png";
+import tmLogo from "../../Assets/favicon-32x32.png";
 import { Link } from "react-router-dom";
 
 const LINKS = [

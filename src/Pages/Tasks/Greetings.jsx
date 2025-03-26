@@ -27,7 +27,7 @@ const Greetings = () => {
   }
 
   return (
-    <div className="h-[15vh] w-[97%]  md:h-[15vh] md:w-[100%] bg-[0x172554] rounded-xl flex font-poppins p-4 justify-center items-center gap-3 mx-auto max-w-lg">
+    <div className="h-[15vh] w-[97%]  md:h-[15vh] md:w-[100%] bg-blue-950 rounded-xl flex font-poppins p-4 justify-center items-center gap-3 mx-auto max-w-lg">
       <div className="flex gap-3 p-3 h-fit w-fit items-center justify-center">
         <Icon
           size={50}

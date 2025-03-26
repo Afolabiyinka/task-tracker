@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 
-import Loader from "../Components/Basic Components/Loader";
-import SplitText from "../Components/Basic Components/SplitText";
-import ReviewCard from "../Components/Basic Components/Card";
+import Loader from "../../Components/Basic Components/Loader";
+import SplitText from "../../Components/Basic Components/SplitText";
+import ReviewCard from "../../Components/Basic Components/Card";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);

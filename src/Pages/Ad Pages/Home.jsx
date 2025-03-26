@@ -1,8 +1,8 @@
 import React from "react";
-import SplitText from "../Components/Basic Components/SplitText";
-import BlurText from "../Components/Basic Components/BlurText";
-import heroAnimation from "../Assets/download.gif";
-import CustomBtn from "../Components/Basic Components/CustomBtn";
+import SplitText from "../../Components/Basic Components/SplitText";
+import BlurText from "../../Components/Basic Components/BlurText";
+import heroAnimation from "../../Assets/ToDo Task List.gif";
+import CustomBtn from "../../Components/Basic Components/CustomBtn";
 
 const Home = () => {
   return (
