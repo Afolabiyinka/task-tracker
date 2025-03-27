@@ -14,7 +14,6 @@ const SplitText = ({
   onLetterAnimationComplete,
 }) => {
   const words = text.split(" ").map((word) => word.split(""));
-
   const letters = words.flat();
   const [inView, setInView] = useState(false);
   const ref = useRef();
@@ -60,14 +59,8 @@ const SplitText = ({
   return (
     <p
       ref={ref}
-      className={`split-parent ${className}`}
-      style={{
-        textAlign,
-        overflow: "hidden",
-        display: "inline",
-        whiteSpace: "normal",
-        wordWrap: "break-word",
-      }}
+      className={`split-parent overflow-hidden inline ${className}`}
+      style={{ textAlign, whiteSpace: "normal", wordWrap: "break-word" }}
     >
       {words.map((word, wordIndex) => (
         <span
@@ -82,11 +75,8 @@ const SplitText = ({
             return (
               <animated.span
                 key={index}
-                style={{
-                  ...springs[index],
-                  display: "inline-block",
-                  willChange: "transform, opacity",
-                }}
+                style={springs[index]}
+                className="inline-block transform transition-opacity will-change-transform"
               >
                 {letter}
               </animated.span>

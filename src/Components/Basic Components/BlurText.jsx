@@ -1,12 +1,12 @@
-import { useRef, useEffect, useState, memo } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSprings, animated } from "@react-spring/web";
 
 const BlurText = ({
   text = "",
-  delay = 200,
+  delay = 20,
   className = "",
-  animateBy = "words",
-  direction = "top",
+  animateBy = "words", // 'words' or 'letters'
+  direction = "top", // 'top' or 'bottom'
   threshold = 0.1,
   rootMargin = "0px",
   animationFrom,

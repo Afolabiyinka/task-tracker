@@ -37,7 +37,7 @@ const Reviews = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.2, ease: "easeOut" },
     },
   };
 
@@ -49,7 +49,7 @@ const Reviews = () => {
           variants={cardVariants}
           initial="hidden"
           animate="visible"
-          transition={{ delay: index * 0.2 }} // Stagger animation
+          transition={{ delay: index * 0.1 }} // Stagger animation
           className="w-full max-w-md mx-auto"
         >
           <ReviewCard review={review} />
