@@ -37,7 +37,7 @@ const Greetings = () => {
           <SplitText
             text={greeting}
             className="text-white text-xl md:text-2xl font-bold text-center"
-            delay={0.2}
+            delay={60}
             animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
             animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
             easing="easeOutCubic"
