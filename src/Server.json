@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "review": "This app is fantastic! It keeps me organized and on track with my tasks. Highly recommended!",
+      "rating": 5,
+      "image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "janesmith@example.com",
+      "review": "A game-changer for productivity! I love the user-friendly interface and features.",
+      "rating": 5,
+      "image": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "email": "michaelj@example.com",
+      "review": "The best task manager I've used so far. Simple, efficient, and super reliable.",
+      "rating": 4,
+      "image": "https://randomuser.me/api/portraits/men/3.jpg"
+    }
+  ]
+}
