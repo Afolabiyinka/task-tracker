@@ -42,7 +42,7 @@ const Home = () => {
           <motion.img
             src={theme === "light" ? whiteScreenShot : blackScreenShot}
             alt="Hero Animation"
-            className="bg-inherit h-[100%] w-full object-cover rounded-lg"
+            className="bg-inherit h-[100%] w-full object-cover rounded-lg transition-all"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}

@@ -81,7 +81,7 @@ export default function DarkNavbar() {
           <Button
             size="md"
             variant="solid"
-            className="hidden bg-purple-600 px-8 py-2.5 rounded-lg lg:flex gap-1 font-sans font-semibold hover:bg-blue-600 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
+            className="hidden bg-purple-600 px-8 py-2.5 rounded-lg  gap-1 font-sans font-semibold hover:bg-blue-600 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
           >
             Log in
           </Button>
