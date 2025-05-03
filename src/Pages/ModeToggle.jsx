@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Moon, Sun, Laptop, Monitor } from "lucide-react";
+import { Moon, Sun, Monitor } from "lucide-react";
 
 import {
   Menu,
@@ -25,9 +25,9 @@ export function ModeToggle() {
         <MenuTrigger>
           <IconButton
             color="secondary"
-            variant="solid"
+            variant="outline"
             isCircular={true}
-            size="lg"
+            size="md"
             onClick={() => setIsOpen(true)}
           >
             {theme === "light" ? (

@@ -8,7 +8,7 @@ export default function CheckboxDemo({ checked, onChange }) {
         checked={checked}
         onChange={onChange}
         color="blue"
-        ripple={false}
+        // ripple={false}
         className="hover:scale-105 transition-transform duration-500 mr-1"
       >
         <CheckboxIndicator></CheckboxIndicator>

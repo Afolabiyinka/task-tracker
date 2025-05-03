@@ -117,7 +117,7 @@ const Features = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
-              className="px-6 py-4  rounded-2xl flex gap-4 items-center shadow-sm hover:border-gray-300 transition-all duration-300"
+              className="px-6 py-4 rounded-2xl flex gap-4 items-center border-none shadow-none transition-all duration-300"
             >
               <div className="p-3 rounded-xl flex items-center justify-center">
                 <Icon size={28} color={color} />

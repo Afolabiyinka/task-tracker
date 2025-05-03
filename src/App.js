@@ -6,6 +6,7 @@ import { theme, ThemeProvider } from "@material-tailwind/react";
 import Navbar from "./Pages/NavBar";
 import FallBackLoader from "./Components/Basic Components/FallBackLoader";
 import Footer from "./Pages/Footer";
+import TaskCalendar from "./Pages/Tasks/Task Components/Calendar";
 
 // Lazy Loading our pages
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/feautures" element={<Features />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="*" element={<ErrorSection />} />
+            <Route path="/random" element={<TaskCalendar />} />
           </Routes>
         </Suspense>
         <Footer />

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Select, Input, Button } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
+import TaskCalendar from "./Task Components/Calendar";
 
 const TodoList = () => {
   const [taskInput, setTaskInput] = useState("");
@@ -88,9 +89,12 @@ const TodoList = () => {
                   value={priority}
                   onChange={(e) => setPriority(e.target.value)}
                 >
-                  <Select.Option>Low</Select.Option>
-                  <Select.Option>Medium</Select.Option>
-                  <Select.Option>High</Select.Option>
+                  <Select.Option  value={priority}
+                  onChange={(e) => setPriority(e.target.value)}>Low</Select.Option>
+                  <Select.Option  value={priority}
+                  onChange={(e) => setPriority(e.target.value)}>Medium</Select.Option>
+                  <Select.Option  value={priority}
+                  onChange={(e) => setPriority(e.target.value)}>High</Select.Option>
                 </Select.List>
               </Select>
             </div>
@@ -156,7 +160,9 @@ const TodoList = () => {
         </div>
       </div>
 
-      <div className="w-1/2 hidden lg:flex flex-col items-center justify-center h-[80vh] rounded-2xl  backdrop-blur-sm p-6 border border-gray-700"></div>
+      <div className="w-1/2 hidden lg:flex flex-col items-center justify-center h-[80vh] rounded-2xl  backdrop-blur-sm p-6 border border-gray-700">
+        {/* <TaskCalendar /> */}
+      </div>
     </div>
   );
 };

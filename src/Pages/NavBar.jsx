@@ -13,7 +13,7 @@ import {
   MessageSquare,
   Mail,
   CircleCheck,
-  DollarSign,
+  DollarSign, Flag
 } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
 import { Link } from "react-router-dom";
@@ -25,12 +25,12 @@ const LINKS = [
   { icon: DollarSign, title: "Pricing", href: "/pricing" },
   { icon: MessageSquare, title: "Reviews", href: "/reviews" },
   { icon: Mail, title: "Contact", href: "/contact" },
-  // { icon: Flag, title: "Sponsors", href: "/sponsors" },
+  { icon: Flag, title: "Sponsors", href: "/sponsors" },
 ];
 
 function NavList({ onClick }) {
   return (
-    <ul className="mt-4 flex flex-col gap-x-3 gap-y-1.5 lg:mt-0 lg:flex-row lg:items-center">
+    <ul className="mt-4 flex flex-col gap-x-5 gap-y-3 lg:mt-0 lg:flex-row lg:items-center">
       {LINKS.map(({ icon: Icon, title, href }) => (
         <li key={title}>
           <Link
@@ -59,17 +59,17 @@ export default function DarkNavbar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto w-full max-w-screen-xl  mb-2">
+    <Navbar className="mx-auto w-full bg-inherit  border-none mb-4 shadow-none">
       <div className="flex items-center">
         <a
           href="/"
-          className="ml-2 mr-2 flex items-center gap-1 font-semibold"
+          className="ml-2 mr-6 flex items-center gap-1 font-semibold"
           onClick={() => setOpenNav(false)}
         >
           <img src={tmLogo} alt="Logo" className="rounded-lg object-cover" />
           Task Manager
         </a>
-        <hr className="ml-1 mr-1.5 hidden h-5 w-px border-l border-t-0 border-surface/25 lg:block dark:border-surface" />
+        <hr className="ml-1 mr-1.5 hidden h-5 w-px  border-l border-t-0 border-surface/25 lg:block dark:border-surface" />
         <div className="hidden lg:block">
           <NavList />
         </div>
@@ -81,7 +81,7 @@ export default function DarkNavbar() {
           <Button
             size="md"
             variant="solid"
-            className="hidden bg-purple-600 px-8 py-2.5 rounded-lg  gap-1 font-sans font-semibold hover:bg-blue-600 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
+            className="hidden bg-purple-600 px-8 py-2 border-none rounded-lg  gap-1 font-sans font-semibold hover:bg-blue-600 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
           >
             Log in
           </Button>

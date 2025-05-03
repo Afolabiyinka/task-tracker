@@ -17,14 +17,14 @@ export const Task = ({
   const taskRef = useRef(null);
   const [taskSize, setTaskSize] = useState({ width: 0, height: 0, x: 0, y: 0 });
 
-  // Update task element size and position for confetti
+  
   useEffect(() => {
     if (taskRef.current && showConfetti) {
       const rect = taskRef.current.getBoundingClientRect();
       setTaskSize({
-        width: rect.width + 50, // Add some padding
+        width: rect.width + 50,
         height: rect.height + 50,
-        x: rect.x - 25, // Center the confetti by offsetting the padding
+        x: rect.x - 25, 
         y: rect.y - 25,
       });
     }
@@ -44,7 +44,7 @@ export const Task = ({
     }
   }, [showConfetti]);
 
-  // Determine priority color with dark blue as default
+
   const getPriorityColor = () => {
     if (priority === "High") return "bg-red-100 text-red-600";
     if (priority === "Medium") return "bg-amber-100 text-amber-600";
@@ -102,13 +102,13 @@ export const Task = ({
             >
               {title}
             </Typography>
-            {/* {priority && (
+            {priority && (
               <span
                 className={`text-xs px-2 py-1 rounded-full ${getPriorityColor()} font-medium inline-block`}
               >
                 {priority}
               </span>
-            )} */}
+            )}
           </div>
         </div>
         <motion.button

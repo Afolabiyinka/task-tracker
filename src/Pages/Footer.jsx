@@ -32,7 +32,7 @@ export default function Footer() {
       </Typography>
       <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
         {LINKS.map(({ title, href, index }) => (
-          <li key={index}>
+          <li key={title}>
             <Typography as="a" href={href} className="hover:text-primary">
               {title}
             </Typography>

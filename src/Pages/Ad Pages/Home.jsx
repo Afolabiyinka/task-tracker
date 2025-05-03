@@ -9,7 +9,7 @@ const Home = () => {
   const { theme } = useTheme();
   return (
     <>
-      <div className="md:flex h-fit w-fit  px-2 lg:px-6">
+      <div className="flex flex-col md:flex-row h-fit w-fit gap-4 md:gap-0  px-2 lg:px-6">
         <div className="w-[100%] h-[100%] lg:w-[50%] lg:h-[80vh] flex flex-col items-center justify-center gap-6  text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -42,7 +42,7 @@ const Home = () => {
           <motion.img
             src={theme === "light" ? whiteScreenShot : blackScreenShot}
             alt="Hero Animation"
-            className="bg-inherit h-[100%] w-full object-cover rounded-lg transition-all"
+            className="bg-inherit h-[100%]  object-cover rounded-lg transition-all"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}

@@ -10,7 +10,7 @@ const CustomBtn = ({ linkpath, text, click }) => {
         <Button
           color="secondary"
           size="lg"
-          className="bg-purple-600 rounded-lg flex gap-1 font-sans font-semibold  hover:bg-blue-600 transition-transform hover:scale-105 duration-700 ease-in-out"
+          className="bg-purple-600 rounded-lg flex gap-1 font-sans font-semibold  hover:bg-blue-600 transition-transform hover:scale-105 duration-700 ease-in-ou  text-inherit"
           onClick={click}
         >
           {text}
