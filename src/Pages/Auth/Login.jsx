@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Checkbox, Button, Input } from "@material-tailwind/react";
+import { Button, Input } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Eye, EyeOff, Mail } from "lucide-react";
 import { motion } from "framer-motion";
@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import GoogleBtn from "./GoogleLogin";
 import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import Loader from "../../Components/Basic Components/Loader";
+import { useTheme } from "../../Contexts/ThemeContext";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -21,6 +22,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { theme } = useTheme();
 
   // Check if a Google user is already stored
   useEffect(() => {
@@ -55,7 +57,7 @@ const Login = () => {
       if (response.ok) {
         toast.success("Login successful 🎉", {
           position: "top-center",
-          theme: "dark",
+          // theme: { theme },
         });
 
         setTimeout(() => navigate("/tasks"), 2000);
@@ -70,7 +72,7 @@ const Login = () => {
       console.error("Error:", err);
       toast.error("Something went wrong. Please try again.", {
         position: "top-center",
-        theme: "dark",
+        // theme: { theme },
       });
     }
     if (rememberMe) {
@@ -155,9 +157,7 @@ const Login = () => {
                 />
                 Remember Me
               </label>
-              <a className="text-blue-500 hover:underline" href="#">
-                Forgot password?
-              </a>
+              <p className="text-blue-500 hover:underline">Forgot password?</p>
             </motion.div>
 
             <motion.div variants={slideUpVariants}>

@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { Select, Input, Button } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
-import TaskCalendar from "./Task Components/Calendar";
+// import TaskCalendar from "./Task Components/Calendar";
 
 const TodoList = () => {
   const [taskInput, setTaskInput] = useState("");
-  const [priority, setPriority] = useState("Low");
+  const [priority, setPriority] = useState("low");
   const [tasks, setTasks] = useState(() => {
     const localTasks = localStorage.getItem("tasks");
     if (localTasks === null) return [];
@@ -85,16 +85,10 @@ const TodoList = () => {
                   placeholder="Priority"
                   value={priority}
                 />
-                <Select.List
-                  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}
-                >
-                  <Select.Option  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}>Low</Select.Option>
-                  <Select.Option  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}>Medium</Select.Option>
-                  <Select.Option  value={priority}
-                  onChange={(e) => setPriority(e.target.value)}>High</Select.Option>
+                <Select.List>
+                  <Select.Option>Low</Select.Option>
+                  <Select.Option>Medium</Select.Option>
+                  <Select.Option>High</Select.Option>
                 </Select.List>
               </Select>
             </div>

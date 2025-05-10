@@ -3,7 +3,6 @@ import Home from "./Ad Pages/Home";
 import Reviews from "./Ad Pages/Reviews";
 import Form from "./Ad Pages/ContactUs";
 import Features from "./Ad Pages/Feautures";
-import Pricing from "./Ad Pages/Pricing";
 
 const HomePage = () => {
   return (
@@ -11,7 +10,7 @@ const HomePage = () => {
       <Home />
       <Features />
       <Reviews />
-      {/* <Pricing /> */}
+
       <Form />
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView as useReactInView } from "react-intersection-observer";
 import Loader from "../../Components/Basic Components/Loader";

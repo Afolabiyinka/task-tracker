@@ -21,7 +21,6 @@ import {
 import {
   PlusOutlined,
   SettingOutlined,
-  BulbOutlined,
   CalendarOutlined,
 } from "@ant-design/icons";
 import { Drawer } from "@material-tailwind/react";

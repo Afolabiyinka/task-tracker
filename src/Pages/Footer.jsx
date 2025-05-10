@@ -13,11 +13,11 @@ const LINKS = [
   },
   {
     title: "Contribute",
-    href: "https://github.com/Afolabiyinka",
+    href: "https://github.com/Afolabiyinka/task-tracker",
   },
   {
     title: "Contact Us",
-    href: "/contact",
+    href: "mailto:Afolabiyinka738@gmail.com",
   },
 ];
 
@@ -33,7 +33,12 @@ export default function Footer() {
       <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
         {LINKS.map(({ title, href, index }) => (
           <li key={title}>
-            <Typography as="a" href={href} className="hover:text-primary">
+            <Typography
+              as="a"
+              href={href}
+              className="hover:text-primary"
+              target="_blank"
+            >
               {title}
             </Typography>
           </li>

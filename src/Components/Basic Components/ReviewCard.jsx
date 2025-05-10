@@ -1,11 +1,4 @@
-import {
-  Card,
-  Typography,
-  Button,
-  CardBody,
-  CardFooter,
-  Avatar,
-} from "@material-tailwind/react";
+import { Card, Typography, CardBody, Avatar } from "@material-tailwind/react";
 import StarRating from "./StarRating";
 function ReviewCard({ review }) {
   return (
