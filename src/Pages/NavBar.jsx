@@ -13,7 +13,8 @@ import {
   MessageSquare,
   Mail,
   CircleCheck,
-  DollarSign, Flag
+  DollarSign,
+  Flag,
 } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
 import { Link } from "react-router-dom";
@@ -94,7 +95,7 @@ export default function DarkNavbar() {
           color="secondary"
           variant="ghost"
           onClick={() => setOpenNav(!openNav)}
-          className="ml-auto grid lg:hidden "
+          className="ml-auto grid lg:hidden ~"
         >
           {openNav ? <X size={30} /> : <Menu size={35} />}
         </IconButton>

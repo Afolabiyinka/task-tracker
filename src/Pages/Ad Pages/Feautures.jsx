@@ -3,7 +3,8 @@ import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Clipboard, CheckCheck, Clock } from "lucide-react";
-import animation from "../../Assets/ToDo Task List.gif";
+// import animation from "../../Assets/ToDo Task List.gif";
+import svgAnimation from "../../Assets/undraw_to-do-list_eoia.svg";
 
 const Features = () => {
   // Create a ref for the section title
@@ -134,13 +135,13 @@ const Features = () => {
           initial="hidden"
           animate={imageInView ? "visible" : "hidden"}
           variants={imageVariants}
-          className="w-full md:w-[50%] max-w-lg"
+          className="w-full md:w-[50%] max-w-lg h-full"
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl flex justify-center  items-center">
             <img
-              src={animation}
+              src={svgAnimation}
               alt="Task manager animation"
-              className="w-full h-full object-cover"
+              className="h-96 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" />
           </div>

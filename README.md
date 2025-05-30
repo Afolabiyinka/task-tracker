@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Task Tracker 📝🔥
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Luxury Without Label 👗✨
 
-## Available Scripts
+![Home Page Screenshot](/public/Homepage.png)
 
-In the project directory, you can run:
+A sleek and responsive fashion web app built with **React** and **Tailwind CSS**. "Luxury Without Label" is designed to showcase stylish clothing with a minimalist, label-free aesthetic — premium looks without the big brand logos.
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ⚡ Built with React (Vite or CRA — depending on your setup)
+- 💨 Tailwind CSS for fast, responsive design
+- 🖼️ Home, Collection, and Product pages
+- 📱 Mobile-friendly & accessible
+- 🌙 Clean and modern UI/UX
+- 🖋️Creating of mini fashion blogs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend**: React, Tailwind CSS, JSX
+- **State**: React Hooks (useState, useEffect, etc.)
+- **Routing**: React Router (if applicable)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 💻 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Follow these steps to run the project locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Afolabiyinka/Luxury-without-label.git
+   cd Luxury-without-label
+   ```
+2. **Install dependencies:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm install
+```
 
-### `npm run eject`
+3. Start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm run dev
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A full-featured task tracking web app built with **React** connected to a backend API. Manage your daily to-dos by creating an account, adding tasks, toggling reminders, and switching between light and dark modes! 🌗
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🚀 Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- ✍️ Add new tasks with name, day/time, and reminder toggle
+- 👤 User registration and login to save your tasks
+- ❌ Delete tasks you’ve completed or don’t need
+- 🌙 Light and dark mode toggle for your preference
+- 🎯 Clean, minimal UI for focused task management
+- 📱 Responsive design for mobile & desktop
 
-## Learn More
+## 🛠️ Tech Stack
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- ⚛️ **Frontend**: React (functional components + hooks)
+- 🔗 **Backend**: Connected to REST API (Node.js, Express, or similar)
+- 🎨 **Styling**: Tailwind CSS
+- 🔄 **State Management**: React useState & useEffect hooks
+- 🛡️ **Authentication**: User account creation and login
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 💻 Getting Started
 
-### Code Splitting
+Follow these steps to set up and run the Task Tracker project locally:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 1. Clone the repository
 
-### Analyzing the Bundle Size
+```bash
+git clone https://github.com/Afolabiyinka/task-tracker.git
+cd task-tracker
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install dependencies
 
-### Making a Progressive Web App
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. Start the development server
+   bash
+   Copy
+   Edit
+   npm start

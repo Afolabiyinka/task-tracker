@@ -1,57 +1,24 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
-import { useState, useEffect } from "react";
 import { Select, Input, Button } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
+import { useTasks } from "../../Hooks/TasksContext";
 // import TaskCalendar from "./Task Components/Calendar";
 
 const TodoList = () => {
-  const [taskInput, setTaskInput] = useState("");
-  const [priority, setPriority] = useState("low");
-  const [tasks, setTasks] = useState(() => {
-    const localTasks = localStorage.getItem("tasks");
-    if (localTasks === null) return [];
-    return JSON.parse(localTasks);
-  });
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  function addTodo(e) {
-    if (taskInput.trim() === "") return;
-    e.preventDefault();
-    setTasks((currentTasks) => {
-      return [
-        ...currentTasks,
-        {
-          id: crypto.randomUUID(),
-          title: taskInput,
-          completed: false,
-          priority: priority,
-        },
-      ];
-    });
-    setTaskInput("");
-  }
-
-  function removeTodo(id) {
-    setTasks((currentTasks) => {
-      return currentTasks.filter((task) => task.id !== id);
-    });
-  }
-
-  function toggleTodo(id, completed) {
-    setTasks((currentTasks) => {
-      return currentTasks.map((task) => {
-        if (task.id === id) {
-          return { ...task, completed };
-        }
-        return task;
-      });
-    });
-  }
+  const {
+    addTodo,
+    removeTodo,
+    toggleTodo,
+    taskInput,
+    setTaskInput,
+    priority,
+    setPriority,
+    tasks,
+    setTasks,
+    loading,
+  } = useTasks();
 
   return (
     <div className="w-full md:w-full min-h-[70vh] rounded-xl text-lg md:text-xl flex gap-2 p-2">
