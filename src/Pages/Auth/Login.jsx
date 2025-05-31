@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Button, Input } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Eye, EyeOff, Mail } from "lucide-react";
@@ -8,14 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import GoogleBtn from "./GoogleLogin";
 import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import Loader from "../../Components/Basic Components/Loader";
-import { useTheme } from "../../Contexts/ThemeContext";
 import { ValidateLogin } from "../../Hooks/ValidateLogin";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
-
 const Login = () => {
   const {
     handleLogin,
@@ -30,6 +28,20 @@ const Login = () => {
     showPassword,
     setShowPassword,
   } = ValidateLogin();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("Tm-token");
+    if (storedUser) {
+      toast.success("Loggin In 🎉", {
+        position: "top-center",
+      });
+      setTimeout(() => {
+        navigate("/tasks");
+      }, 2000);
+    }
+  });
 
   return (
     <motion.div
@@ -128,6 +140,7 @@ const Login = () => {
           </motion.form>
         </motion.div>
       </motion.div>
+      <ToastContainer />
     </motion.div>
   );
 };
