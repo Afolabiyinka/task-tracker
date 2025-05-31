@@ -2,7 +2,14 @@ import { useState, useEffect, useContext, createContext } from "react";
 import { toast } from "react-toastify";
 
 const TaskContext = createContext();
-export const useTasks = () => useContext(TaskContext);
+
+export const useTasks = () => {
+  const context = useContext(TaskContext);
+  if (!context) {
+    throw new Error("useTasks must be used within a TasksProvider");
+  }
+  return context;
+};
 
 export function TasksProvider({ children }) {
   const [taskInput, setTaskInput] = useState("");
@@ -10,12 +17,13 @@ export function TasksProvider({ children }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Fetch tasks once component mounts
   useEffect(() => {
     async function fetchTasks() {
       const token = localStorage.getItem("Tm-token");
 
+      setLoading(true);
       try {
-        setLoading(true);
         const response = await fetch(
           "https://taskmaster-project-hi5d.onrender.com/tasks",
           {
@@ -25,12 +33,16 @@ export function TasksProvider({ children }) {
           }
         );
         const data = await response.json();
+
         if (response.ok) {
           setTasks(data.tasks);
-          console.log(data);
+        } else {
+          toast.error("Unable to fetch tasks", {
+            position: "top-center",
+          });
         }
       } catch (error) {
-        setLoading(false);
+        console.error("Fetch error:", error);
         toast.error("Failed to fetch tasks", {
           position: "top-center",
         });
@@ -39,16 +51,23 @@ export function TasksProvider({ children }) {
       }
     }
 
-    // fetchTasks();
+    fetchTasks();
   }, []);
 
+  // Add a new task
   async function addTodo(e) {
-    if (taskInput.trim() === "") return;
     e.preventDefault();
+
+    if (taskInput.trim() === "") {
+      toast.warn("Task input cannot be empty", {
+        position: "top-center",
+      });
+      return;
+    }
 
     const newTask = {
       title: taskInput,
-      priority: priority,
+      priority,
       completed: false,
     };
 
@@ -68,37 +87,38 @@ export function TasksProvider({ children }) {
       );
 
       const data = await response.json();
-      // setTasks((currentTasks) => [...currentTasks, data]);
 
       if (response.ok) {
-        setTasks((currentTasks) => [...currentTasks, data]);
-        console.log(data);
+        setTasks((prevTasks) => [...prevTasks, data.task]); // <-- Add 'data.task', not 'data'
         setTaskInput("");
+        toast.success("Task added!", { position: "top-center" });
       } else {
-        console.error(
-          "Failed to add task:",
-          data.message || response.statusText
-        );
+        toast.error(data.message || "Failed to add task", {
+          position: "top-center",
+        });
       }
     } catch (err) {
-      console.log("Error adding task:", err);
+      console.error("Error adding task:", err);
+      toast.error("Network error while adding task", {
+        position: "top-center",
+      });
     }
   }
 
+  // Delete a task
   async function removeTodo(id) {
     const token = localStorage.getItem("Tm-token");
 
     if (!token) {
-      console.error("No authentication token found");
       toast.error("Authentication required", {
         position: "top-center",
       });
       return;
     }
 
-    try {
-      setLoading(true); // Show loading state while deleting
+    setLoading(true);
 
+    try {
       const response = await fetch(
         `https://taskmaster-project-hi5d.onrender.com/tasks/${id}`,
         {
@@ -109,26 +129,15 @@ export function TasksProvider({ children }) {
         }
       );
 
+      const data = await response.json();
+
       if (response.ok) {
-        setTasks((currentTasks) =>
-          currentTasks.filter((task) => task.id !== id)
-        );
+        setTasks((prev) => prev.filter((task) => task._id !== id));
         toast.success("Task deleted successfully", {
           position: "top-center",
         });
       } else {
-        let errorMessage = "Failed to delete task";
-
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.message || response.statusText;
-        } catch (parseError) {
-          // If response isn't valid JSON
-          errorMessage = response.statusText;
-        }
-
-        console.error("Failed to delete task:", errorMessage);
-        toast.error(errorMessage, {
+        toast.error(data.message || "Failed to delete task", {
           position: "top-center",
         });
       }
@@ -138,10 +147,11 @@ export function TasksProvider({ children }) {
         position: "top-center",
       });
     } finally {
-      setLoading(false); // Always hide loading state when done
+      setLoading(false);
     }
   }
 
+  // Toggle task completed
   async function toggleTodo(id, completed) {
     const token = localStorage.getItem("Tm-token");
 
@@ -159,24 +169,24 @@ export function TasksProvider({ children }) {
       );
 
       if (response.ok) {
-        setTasks((currentTasks) =>
-          currentTasks.map((task) =>
-            task.id === id ? { ...task, completed } : task
-          )
+        setTasks((prev) =>
+          prev.map((task) => (task.id === id ? { ...task, completed } : task))
         );
       } else {
         const errorData = await response.json();
-        console.error("Failed to update task:", errorData.message);
+        toast.error(errorData.message || "Failed to update task", {
+          position: "top-center",
+        });
       }
     } catch (error) {
       console.error("Error updating task:", error);
+      toast.error("Network error while updating task", {
+        position: "top-center",
+      });
     }
   }
 
   const value = {
-    addTodo,
-    removeTodo,
-    toggleTodo,
     taskInput,
     setTaskInput,
     priority,
@@ -184,6 +194,9 @@ export function TasksProvider({ children }) {
     tasks,
     setTasks,
     loading,
+    addTodo,
+    removeTodo,
+    toggleTodo,
   };
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;

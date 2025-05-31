@@ -3,7 +3,6 @@ import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Clipboard, CheckCheck, Clock } from "lucide-react";
-// import animation from "../../Assets/ToDo Task List.gif";
 import svgAnimation from "../../Assets/undraw_to-do-list_eoia.svg";
 
 const Features = () => {

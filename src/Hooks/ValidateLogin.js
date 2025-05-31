@@ -34,16 +34,11 @@ export function UserProvider({ children }) {
 
       if (response.ok) {
         const receivedToken = data.token;
+        console.log(receivedToken);
 
         if (receivedToken) {
-          setToken(receivedToken);
-
-          // Store token based on rememberMe
-          if (rememberMe) {
-            localStorage.setItem("Tm-token", receivedToken);
-          } else {
-            sessionStorage.setItem("Tm-token", receivedToken); // Use sessionStorage for non-remembered login
-          }
+          localStorage.setItem("Tm-token", receivedToken);
+          console.log(receivedToken);
 
           toast.success("Login successful 🎉", {
             position: "top-center",
@@ -76,10 +71,8 @@ export function UserProvider({ children }) {
     rememberMe,
     setRememberMe,
     loading,
-    setLoading,
     showPassword,
     setShowPassword,
-    token,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

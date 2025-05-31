@@ -9,6 +9,7 @@ import GoogleBtn from "./GoogleLogin";
 import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import Loader from "../../Components/Basic Components/Loader";
 import { useTheme } from "../../Contexts/ThemeContext";
+import { ValidateLogin } from "../../Hooks/ValidateLogin";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -16,77 +17,19 @@ const slideUpVariants = {
 };
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { theme } = useTheme();
+  const {
+    handleLogin,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    rememberMe,
+    setRememberMe,
+    loading,
 
-  // Check if a Google user is already stored
-  useEffect(() => {
-    const savedEmail = localStorage.getItem("savedEmail");
-    const savedPassword = localStorage.getItem("savedPassword");
-    const savedRememberMe = localStorage.getItem("rememberMe") === "true";
-
-    if (savedRememberMe) {
-      setEmail(savedEmail || "");
-      setPassword(savedPassword || "");
-      setRememberMe(true);
-    }
-  }, [navigate]);
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const userCredentials = { email, password };
-
-    try {
-      setLoading(true);
-      const response = await fetch(
-        "https://taskmaster-project-hi5d.onrender.com/auth/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userCredentials),
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.ok) {
-        toast.success("Login successful 🎉", {
-          position: "top-center",
-          // theme: { theme },
-        });
-
-        setTimeout(() => navigate("/tasks"), 2000);
-      } else {
-        setLoading(false);
-        toast.error(
-          data.message || "Login failed! Please check your credentials."
-        );
-      }
-    } catch (err) {
-      setLoading(false);
-      console.error("Error:", err);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-center",
-        // theme: { theme },
-      });
-    }
-    if (rememberMe) {
-      // localStorage.setItem("token", data.token);
-      localStorage.setItem("savedEmail", email);
-      localStorage.setItem("savedPassword", password);
-      localStorage.setItem("rememberMe", "true");
-    } else {
-      // sessionStorage.setItem("token", data.token);
-      localStorage.removeItem("savedEmail");
-      localStorage.removeItem("savedPassword");
-      localStorage.setItem("rememberMe", "false");
-    }
-  };
+    showPassword,
+    setShowPassword,
+  } = ValidateLogin();
 
   return (
     <motion.div

@@ -17,14 +17,13 @@ export const Task = ({
   const taskRef = useRef(null);
   const [taskSize, setTaskSize] = useState({ width: 0, height: 0, x: 0, y: 0 });
 
-  
   useEffect(() => {
     if (taskRef.current && showConfetti) {
       const rect = taskRef.current.getBoundingClientRect();
       setTaskSize({
         width: rect.width + 50,
         height: rect.height + 50,
-        x: rect.x - 25, 
+        x: rect.x - 25,
         y: rect.y - 25,
       });
     }
@@ -43,7 +42,6 @@ export const Task = ({
       return () => clearTimeout(timer);
     }
   }, [showConfetti]);
-
 
   const getPriorityColor = () => {
     if (priority === "High") return "bg-red-100 text-red-600";
