@@ -17,7 +17,7 @@ import {
   Flag,
 } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ModeToggle } from "./ModeToggle";
 
 const LINKS = [
@@ -30,10 +30,18 @@ const LINKS = [
 ];
 
 function NavList({ onClick }) {
+  const location = useLocation();
   return (
-    <ul className="mt-4 flex flex-col gap-x-5 gap-y-3 lg:mt-0 lg:flex-row lg:items-center">
+    <ul className="mt-4 flex flex-col gap-x-9 gap-y-4 lg:mt-0 lg:flex-row lg:items-center">
       {LINKS.map(({ icon: Icon, title, href }) => (
-        <li key={title}>
+        <li
+          key={title}
+          className={`${
+            location.pathname === href
+              ? "bg-gray-200 dark:bg-gray-800 rounded-xl p-1"
+              : ""
+          } `}
+        >
           <Link
             to={href}
             className="flex items-center gap-x-2 p-1  hover:text-gray-300"
@@ -102,9 +110,8 @@ export default function DarkNavbar() {
       </div>
       <Collapse open={openNav}>
         <NavList onClick={() => setOpenNav(false)} />
-        <div className="flex gap-2 items-center ">
+        <div className="flex gap-2 items-center mt-2 ">
           <ModeToggle />
-          <p>Change Theme</p>
         </div>
         <Button
           size="sm"

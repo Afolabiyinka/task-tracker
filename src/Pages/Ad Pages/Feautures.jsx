@@ -1,4 +1,3 @@
-import React from "react";
 import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -89,7 +88,7 @@ const Features = () => {
   };
 
   return (
-    <div className="py-16 px-4 md:px-12 max-w-7xl mx-auto">
+    <div className="py-16 px-4">
       <motion.h2
         ref={titleRef}
         initial="hidden"

@@ -5,6 +5,7 @@ import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
 import { useTasks } from "../../Hooks/TasksContext";
 import Loader from "../../Components/Basic Components/Loader";
+import { ToastContainer } from "react-toastify";
 // import TaskCalendar from "./Task Components/Calendar";
 
 const TodoList = () => {
@@ -126,6 +127,7 @@ const TodoList = () => {
       <div className="w-1/2 hidden lg:flex flex-col items-center justify-center h-[80vh] rounded-2xl backdrop-blur-sm p-6 border border-gray-700">
         {/* <TaskCalendar /> */}
       </div>
+      <ToastContainer />
     </div>
   );
 };

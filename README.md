@@ -16,7 +16,7 @@ A full-featured task tracking web app built with **React** connected to a backen
 ## 🛠️ Tech Stack
 
 - ⚛️ **Frontend**: React (functional components + hooks)
-- 🔗 **Backend**: Connected to REST API (Node.js, Express, or similar)
+- 🔗 **Backend**: Connected to REST API (Node.js, Express)
 - 🎨 **Styling**: Tailwind CSS
 - 🔄 **State Management**: React useState & useEffect hooks
 - 🛡️ **Authentication**: User account creation and login

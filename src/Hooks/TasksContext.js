@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import { toast } from "react-toastify";
+import { useTheme } from "../Contexts/ThemeContext";
 
 const TaskContext = createContext();
 
@@ -16,6 +17,7 @@ export function TasksProvider({ children }) {
   const [priority, setPriority] = useState("low");
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { theme } = useTheme();
 
   // Fetch tasks once component mounts
   useEffect(() => {
@@ -39,12 +41,14 @@ export function TasksProvider({ children }) {
         } else {
           toast.error("Unable to fetch tasks", {
             position: "top-center",
+            theme: theme,
           });
         }
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.log(error);
         toast.error("Failed to fetch tasks", {
           position: "top-center",
+          theme: theme,
         });
       } finally {
         setLoading(false);
@@ -89,18 +93,20 @@ export function TasksProvider({ children }) {
       const data = await response.json();
 
       if (response.ok) {
-        setTasks((prevTasks) => [...prevTasks, data.task]); // <-- Add 'data.task', not 'data'
+        setTasks((prevTasks) => [...prevTasks, data.task]);
         setTaskInput("");
-        toast.success("Task added!", { position: "top-center" });
+        toast.success("Task added!", { position: "top-center", theme: theme });
       } else {
         toast.error(data.message || "Failed to add task", {
           position: "top-center",
+          theme: theme,
         });
       }
     } catch (err) {
-      console.error("Error adding task:", err);
+      console.log("Error adding task:", err);
       toast.error("Network error while adding task", {
         position: "top-center",
+        theme: theme,
       });
     }
   }

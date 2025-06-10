@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 
@@ -28,7 +27,6 @@ const Router = () => {
         <Route path="/feautures" element={<Features />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="*" element={<ErrorSection />} />
-        {/* <Route path="/random" element={<TaskCalendar />} />/ */}
       </Routes>
     </>
   );
