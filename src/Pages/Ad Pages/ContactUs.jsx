@@ -51,8 +51,8 @@ const Form = () => {
   };
 
   return (
-    <div className="w-full py-2 flex justify-start items-center px-6 ">
-      <div className="w-full lg:w-[40%] px-2 flex flex-col items-center gap-5">
+    <div className=" py-2 flex justify-start items-center px-6 ">
+      <div className="w-full lg:w-[50%] px-2 flex flex-col items-center gap-5">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,13 +68,13 @@ const Form = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <form onSubmit={handleFormSubmit} className="flex flex-col gap-6">
-            <div className="flex flex-col gap-4">
+          <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3">
               <label htmlFor="name" className=" font-mono text-lg">
                 Your Name
               </label>
               <Input
-                className=" border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=" rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -85,7 +85,7 @@ const Form = () => {
                 Your Email
               </label>
               <Input
-                className=" border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=" rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -105,7 +105,7 @@ const Form = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 variants={slideUpVariants}
-                className=" border rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                className=" rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
               />
             </div>
 

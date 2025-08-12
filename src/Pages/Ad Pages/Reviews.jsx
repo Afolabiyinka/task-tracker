@@ -78,7 +78,7 @@ const Reviews = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center gap-9 px-4 py-6 md:py-12 justify-center">
+    <div className="h-fit shadow-sm flex flex-col items-center gap-9 px-4 py-6 md:py-12 justify-center">
       <motion.h1
         ref={headingRef}
         className="text-3xl font-bold text-center"
@@ -91,7 +91,7 @@ const Reviews = () => {
 
       <motion.div
         ref={gridRef}
-        className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 w-full px-4 gap-6 max-w-screen-xl"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 w-full px-4 gap-6 max-w-screen-xl"
         initial="hidden"
         animate={gridInView ? "visible" : "hidden"}
         variants={gridVariants}

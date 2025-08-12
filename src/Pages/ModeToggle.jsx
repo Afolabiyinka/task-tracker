@@ -21,7 +21,7 @@ export function ModeToggle() {
   }
   return (
     <div className="lg:grid">
-      <Menu className="mt-3" color="secondary">
+      <Menu className="mt-3">
         <MenuTrigger>
           <IconButton
             color="secondary"
@@ -39,10 +39,7 @@ export function ModeToggle() {
         </MenuTrigger>
 
         {isOpen && (
-          <MenuContent
-            className="flex flex-col cursor-pointer mt-3"
-            color="secondary"
-          >
+          <MenuContent className="flex flex-col cursor-pointer mt-3">
             <span
               className="flex justify-between cursor-pointer active:bg-gray-500 p-2 rounded-lg"
               onClick={() => handleClick("light")}

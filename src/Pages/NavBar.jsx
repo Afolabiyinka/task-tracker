@@ -6,27 +6,15 @@ import {
   Collapse,
   Navbar,
 } from "@material-tailwind/react";
-import {
-  Home,
-  X,
-  Menu,
-  MessageSquare,
-  Mail,
-  CircleCheck,
-  DollarSign,
-  Flag,
-} from "lucide-react";
+import { Home, X, Menu, Mail, CircleCheck, DollarSign } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
 import { Link, useLocation } from "react-router-dom";
-import { ModeToggle } from "./ModeToggle";
 
 const LINKS = [
   { icon: Home, title: "Home", href: "/" },
   { icon: CircleCheck, title: "Feautures", href: "/feautures" },
   { icon: DollarSign, title: "Pricing", href: "/pricing" },
-  { icon: MessageSquare, title: "Reviews", href: "/reviews" },
   { icon: Mail, title: "Contact", href: "/contact" },
-  { icon: Flag, title: "Sponsors", href: "/sponsors" },
 ];
 
 function NavList({ onClick }) {
@@ -68,11 +56,11 @@ export default function DarkNavbar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto w-full bg-inherit  border-none mb-4 shadow-none">
+    <Navbar className="mx-auto w-full bg-inherit p-3 border-none mb-4 shadow-sm  z-50">
       <div className="flex items-center">
         <a
           href="/"
-          className="ml-2 mr-6 flex items-center gap-1 font-semibold"
+          className="ml-2 mr-6 flex text-lg items-center gap-1 "
           onClick={() => setOpenNav(false)}
         >
           <img src={tmLogo} alt="Logo" className="rounded-lg object-cover" />
@@ -90,14 +78,12 @@ export default function DarkNavbar() {
           <Button
             size="md"
             variant="solid"
-            className="hidden bg-purple-600 px-8 py-2 border-none rounded-lg  gap-1 font-sans font-semibold hover:bg-blue-600 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
+            className="hidden bg-blue-600 px-8 py-2 border-none rounded-lg  gap-1 font-sans font-semibold hover:bg-blue-500 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
           >
             Log in
           </Button>
         </Link>
-        <div className="hidden lg:block mr-3 ml-3">
-          <ModeToggle />
-        </div>
+
         <IconButton
           size="sm"
           color="secondary"
@@ -110,9 +96,7 @@ export default function DarkNavbar() {
       </div>
       <Collapse open={openNav}>
         <NavList onClick={() => setOpenNav(false)} />
-        <div className="flex gap-2 items-center mt-2 ">
-          <ModeToggle />
-        </div>
+
         <Button
           size="sm"
           isFullWidth

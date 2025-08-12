@@ -10,6 +10,7 @@ export default function PricingCard() {
         <Chip
           size="lg"
           variant="solid"
+          color="secondary"
           className=" text-xl font-mono font-bold"
         >
           <Chip.Label>Its completely Free</Chip.Label>
@@ -30,7 +31,7 @@ export default function PricingCard() {
           <Typography>Unlimited Tasks</Typography>
         </li>
         <li className="flex items-center gap-4 ">
-          <CheckCircle className="h-5 w-5" color="blue" />
+          <CheckCircle className="h-5 w-5" />
           <Typography>Notifications & Reminders</Typography>
         </li>
         <li className="flex items-center gap-4">
@@ -46,9 +47,10 @@ export default function PricingCard() {
       <Card.Footer>
         <Button
           onClick={() => navigate("/auth/login")}
-          className="border-white  px-28 "
-          color="secondary"
+          className="border"
+          color="primary"
           variant="solid"
+          isFullWidth
         >
           Try it now
         </Button>

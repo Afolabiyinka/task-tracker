@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <motion.div
-      className="h-screen flex items-center justify-center b"
+      className="h-screen flex items-center justify-center text-gray-700 font-sans"
       initial="hidden"
       animate="visible"
     >
@@ -59,7 +59,7 @@ const Login = () => {
           variants={slideUpVariants}
         >
           <motion.h2
-            className="text-2xl font-semibold mb-6 flex gap-2 items-center justify-center"
+            className="text-2xl mb-6 flex gap-2 items-center justify-center"
             variants={slideUpVariants}
           >
             Sign in to your account <User size={32} />
@@ -112,7 +112,7 @@ const Login = () => {
                 />
                 Remember Me
               </label>
-              <p className="text-blue-500 hover:underline">Forgot password?</p>
+              <a className="text-blue-500 hover:underline">Forgot password?</a>
             </motion.div>
 
             <motion.div variants={slideUpVariants}>
@@ -125,9 +125,9 @@ const Login = () => {
               </Button>
             </motion.div>
 
-            <motion.div variants={slideUpVariants} className="mt-3">
+            {/* <motion.div variants={slideUpVariants} className="mt-3">
               <GoogleBtn />
-            </motion.div>
+            </motion.div> */}
             <p className="text-sm text-center mt-4">
               Don't have an account?
               <Link

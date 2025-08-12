@@ -88,18 +88,18 @@ const Features = () => {
   };
 
   return (
-    <div className="py-16 px-4">
+    <div className="py-6 px-4 h-fit shadow-sm">
       <motion.h2
         ref={titleRef}
         initial="hidden"
         animate={titleInView ? "visible" : "hidden"}
         variants={titleVariants}
-        className="text-3xl md:text-4xl font-bold text-center mb-12"
+        className="text-3xl md:text-3xl font-bold text-center mb-12"
       >
         Why Choose Our Task Manager?
       </motion.h2>
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
         <motion.div
           ref={featuresRef}
           initial="hidden"
@@ -116,12 +116,12 @@ const Features = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
-              className="px-6 py-4 rounded-2xl flex gap-4 items-center border-none shadow-none transition-all duration-300"
+              className="px-6 py-2 rounded-2xl flex gap-4 items-center  transition-all duration-300 shadow-sm"
             >
               <div className="p-3 rounded-xl flex items-center justify-center">
                 <Icon size={28} color={color} />
               </div>
-              <Typography className="font-sans font-medium text-2xl md:text-2xl">
+              <Typography className="font-sans font-medium text-xl md:text-xl">
                 {title}
               </Typography>
             </motion.div>
@@ -141,7 +141,7 @@ const Features = () => {
               alt="Task manager animation"
               className="h-96 object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" />
+            {/* <div className="absolute inset-0 bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" /> */}
           </div>
         </motion.div>
       </div>

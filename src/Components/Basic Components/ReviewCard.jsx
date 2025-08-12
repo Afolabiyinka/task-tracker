@@ -1,16 +1,25 @@
-import { Card, Typography, CardBody, Avatar } from "@material-tailwind/react";
+import {
+  Card,
+  Typography,
+  CardBody,
+  CardHeader,
+  Avatar,
+} from "@material-tailwind/react";
 import StarRating from "./StarRating";
 function ReviewCard({ review }) {
   return (
     <Card
-      className="max-w-xl  h-full p-4 shadow-lg transition-all duration-300"
+      className="max-w-lg  h-full p-2 shadow-lg transition-all duration-300"
       color="secondary"
+      variant="outline"
     >
       <CardBody>
-        <Avatar src={review.image} alt={review.name} className="ring-1" />
-        <Typography variant="h6" className="font-semibold font-mono text-xl">
-          {review.name}
-        </Typography>
+        <span className="flex gap-2 items-center">
+          <Avatar src={review.image} alt={review.name} className="ring-1" />
+          <Typography variant="h6" className="font-sans text-xl">
+            {review.name}
+          </Typography>
+        </span>
         <Typography className="my-1">{review.review}</Typography>
         <StarRating rating={review.rating} />
       </CardBody>

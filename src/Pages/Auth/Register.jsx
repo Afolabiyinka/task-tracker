@@ -83,22 +83,22 @@ const Register = () => {
 
   return (
     <motion.div
-      className="h-[90vh] flex items-center justify-center"
+      className="h-[90vh] flex items-center justify-center p-4"
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="max-w-3xl rounded-lg shadow-md p-12 mx-1.5 border-[2px]"
+        className="max-w-3xl rounded-lg shadow-md p-6 md:p-12 mx-1.5 border-[2px]"
         variants={slideUpVariants}
       >
         <motion.h2
-          className="text-2xl font-bold  mb-4 flex gap-2 items-center justify-center"
+          className="text-2xl font-sans  mb-4 flex gap-2 items-center justify-center"
           variants={slideUpVariants}
         >
           Create a new account
         </motion.h2>
         <motion.form
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 text-gray-600"
           onSubmit={handleRegister}
           variants={slideUpVariants}
         >

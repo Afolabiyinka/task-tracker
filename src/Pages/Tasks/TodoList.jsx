@@ -100,7 +100,7 @@ const TodoList = () => {
                 <div className="space-y-3 max-h-72 overflow-y-auto pr-2 task-container">
                   {tasks.map((task) => (
                     <motion.div
-                      key={task.id}
+                      key={task._id}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}

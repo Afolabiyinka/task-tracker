@@ -39,16 +39,18 @@ export function TasksProvider({ children }) {
         if (response.ok) {
           setTasks(data.tasks);
         } else {
+          console.log("something happened");
+          alert("Something happened");
           toast.error("Unable to fetch tasks", {
             position: "top-center",
-            theme: theme,
+            // theme: theme,
           });
         }
       } catch (error) {
         console.log(error);
         toast.error("Failed to fetch tasks", {
           position: "top-center",
-          theme: theme,
+          // theme: theme,
         });
       } finally {
         setLoading(false);
@@ -176,7 +178,7 @@ export function TasksProvider({ children }) {
 
       if (response.ok) {
         setTasks((prev) =>
-          prev.map((task) => (task.id === id ? { ...task, completed } : task))
+          prev.map((task) => (task._id === id ? { ...task, completed } : task))
         );
       } else {
         const errorData = await response.json();

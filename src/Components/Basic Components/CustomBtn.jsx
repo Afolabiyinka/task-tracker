@@ -10,11 +10,11 @@ const CustomBtn = ({ linkpath, text, click }) => {
         <Button
           color="secondary"
           size="lg"
-          className="bg-purple-600 rounded-lg flex gap-1 font-sans font-semibold  hover:bg-blue-600 transition-transform hover:scale-105 duration-700 ease-in-ou  text-inherit"
+          className="bg-blue-600 rounded-lg flex gap-1 font-sans font-semibold  hover:bg-blue-500 transition-all text-white duration-700 ease-in-out"
           onClick={click}
         >
           {text}
-          <ArrowRight />
+          {/* <ArrowRight /> */}
         </Button>
       </Link>
     </div>
