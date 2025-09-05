@@ -6,49 +6,63 @@ import { useTheme } from "../../Contexts/ThemeContext";
 
 const Home = () => {
   const { theme } = useTheme();
-  return (
-    <>
-      <div className="flex flex-col lg:flex-row justify-center items-center h-fit w-fit md:gap-0  px-2 lg:px-6 shadow-sm">
-        <div className="w-[100%] h-[100%] lg:w-[50%] lg:h-[80vh] flex flex-col items-center justify-center gap-6  text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-4xl font-semibold font-sans"
-          >
-            Achieve your goals!
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.4 }}
-            className="text-xl font-sans tracking-wide text-center"
-          >
-            Simplify your to-do list, empowering you to turn aspirations into
-            reality. Track tasks, prioritize effortlessly, manage deadlines and
-            celebrate every milestone. Start achieving today.
-          </motion.p>
+  const screenshot = theme === "dark" ? blackScreenShot : whiteScreenShot;
 
-          <motion.span
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.5 }}
-          >
-            <CustomBtn text="Try it now" linkpath="/auth/login" />
-          </motion.span>
-        </div>
-        <span className=" w-[100%] lg:w-[50%] h-[80vh] rounded-lg flex flex-col items-center justify-center object-cover  px-4 py-4">
-          <motion.img
-            src={theme === "light" ? whiteScreenShot : blackScreenShot}
-            alt="Hero Animation"
-            className="bg-inherit h-[100%]  object-cover rounded-lg transition-all"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          />
-        </span>
+  return (
+    <div className="flex flex-col lg:flex-row justify-center items-center h-full w-full px-4 lg:px-12 py-6 gap-10 relative overflow-hidden">
+      {/* Background */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className=""
+      />
+
+      {/* Left side: Text content */}
+      <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-5 max-w-2xl">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-6xl lg:text-7xl font-bold font-sans leading-tight"
+        >
+          Think, plan and track
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="md:text-4xl lg:text-5xl text-2xl text-gray-500 dark:text-gray-300 tracking-wide"
+        >
+          all in one place
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-lg text-gray-600 dark:text-gray-400"
+        >
+          Efficiently manage your tasks and boost productivity
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <CustomBtn text="Try it now" linkpath="/auth/login" />
+        </motion.div>
       </div>
-    </>
+
+      {/* Right side: Floating Screenshot */}
+      <span className="w-full lg:w-[40%] flex items-center justify-center">
+        <motion.img src={screenshot} alt="App Preview" className="" />
+      </span>
+    </div>
   );
 };
 

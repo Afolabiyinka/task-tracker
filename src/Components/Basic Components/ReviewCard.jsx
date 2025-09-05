@@ -15,7 +15,7 @@ function ReviewCard({ review }) {
     >
       <CardBody>
         <span className="flex gap-2 items-center">
-          <Avatar src={review.image} alt={review.name} className="ring-1" />
+          <Avatar src={review.image} className="ring-1" />
           <Typography variant="h6" className="font-sans text-xl">
             {review.name}
           </Typography>

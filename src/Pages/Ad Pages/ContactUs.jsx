@@ -3,6 +3,7 @@ import { toast, ToastContainer, Slide } from "react-toastify";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import undrawPDF from "../../Assets/undraw_feedback_ebmx.svg";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -130,9 +131,9 @@ const Form = () => {
         </motion.div>
       </div>
       <motion.img
-        src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600"
+        src={undrawPDF}
         alt="Feedback Illustration"
-        className="w-[60%] rounded-xl mt-6 shadow-md  object-cover h-[100%] hidden lg:block"
+        className="w-[60%] rounded-xlshadow-md  object-cover h-[80%] hidden lg:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}

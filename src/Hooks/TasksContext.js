@@ -21,10 +21,10 @@ export function TasksProvider({ children }) {
 
   // Fetch tasks once component mounts
   useEffect(() => {
+    setLoading(true);
     async function fetchTasks() {
       const token = localStorage.getItem("Tm-token");
 
-      setLoading(true);
       try {
         const response = await fetch(
           "https://taskmaster-project-hi5d.onrender.com/tasks",
@@ -38,15 +38,9 @@ export function TasksProvider({ children }) {
 
         if (response.ok) {
           setTasks(data.tasks);
-        } else {
-          console.log("something happened");
-          alert("Something happened");
-          toast.error("Unable to fetch tasks", {
-            position: "top-center",
-            // theme: theme,
-          });
         }
       } catch (error) {
+        setLoading(false);
         console.log(error);
         toast.error("Failed to fetch tasks", {
           position: "top-center",
@@ -80,6 +74,7 @@ export function TasksProvider({ children }) {
     const token = localStorage.getItem("Tm-token");
 
     try {
+      setLoading(true);
       const response = await fetch(
         "https://taskmaster-project-hi5d.onrender.com/tasks",
         {

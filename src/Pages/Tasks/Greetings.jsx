@@ -22,7 +22,7 @@ const Greetings = ({ tasks }) => {
   const taskText = taskCount === 1 ? "task" : "tasks";
 
   return (
-    <div className="w-full rounded-xl shadow-lg p-6 relative">
+    <div className="w-full lg:w-[50%] rounded-xl shadow p-6 relative">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Icon size={36} className="text-yellow-300" />
@@ -38,13 +38,13 @@ const Greetings = ({ tasks }) => {
         )}
       </div>
 
-      <div className="mt-4 italic border-l-4 border-blue-400 pl-4">
+      <div className="mt-4 italic border-l-4 border-blue-400 pl-4 rounded">
         <p className="text-sm md:text-base">
           "Productivity is never an accident. It is always the result of a
           commitment to excellence."
         </p>
       </div>
-      <div className=" absolute right-1 top-10">
+      <div className=" absolute right-1 top-12">
         <ModeToggle />
       </div>
     </div>

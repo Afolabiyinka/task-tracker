@@ -1,6 +1,6 @@
 import React from "react";
-import { CheckCircle } from "lucide-react";
-import { Input, Button, Select } from "@material-tailwind/react";
+import { CheckCircle, ClipboardX, Frown } from "lucide-react";
+import { Input, Button, Select, Alert } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
 import { useTasks } from "../../Hooks/TasksContext";
@@ -22,14 +22,14 @@ const TodoList = () => {
   } = useTasks();
 
   return (
-    <div className="w-full md:w-full min-h-[70vh] rounded-xl text-lg md:text-xl flex gap-2 p-2">
-      <div className="w-full md:w-full min-h-[60vh] md:min-h-[80vh] lg:w-1/2 rounded-2xl text-lg md:text-xl flex flex-col items-center gap-4 p-6 shadow-xl border border-gray-700 backdrop-blur-sm">
+    <div className="w-full md:w-[50%] min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
+      <div className="w-full min-h-[60vh] md:min-h-[80vh] rounded-2xl  text-lg md:text-xl flex flex-col  items-center gap-4 p-4 ">
         <h1 className="text-3xl md:text-4xl flex gap-3 items-center font-bold">
           <span>Add a new Task</span>
           <CheckCircle size={28} />
         </h1>
 
-        <form onSubmit={addTodo} className="w-full max-w-md mt-4">
+        <form onSubmit={addTodo} className="w-full max-w-md ">
           <div className="flex gap-4 flex-col text-white">
             <div className="flex gap-3 items-center justify-center">
               <Input
@@ -56,7 +56,7 @@ const TodoList = () => {
               </Select>
             </div>
             <motion.span whileTap={{ scale: 0.97 }}>
-              <Button color="primary" variant="solid" type="submit">
+              <Button color="secondary" variant="solid" type="submit">
                 Add Task
               </Button>
             </motion.span>
@@ -72,24 +72,15 @@ const TodoList = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <motion.h1
-                  className="text-center text-3xl"
-                  animate={{
-                    opacity: [0.5, 1, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
-                >
-                  No tasks found
-                </motion.h1>
+                <div className="flex justify-center items-center animate-bounce">
+                  <ClipboardX size={50} />
+                </div>
                 <p className="mt-2">Add your first task to get started</p>
               </motion.div>
             </div>
           ) : (
             <div className="flex flex-col gap-3 w-full justify-center">
-              <h2 className="text-xl font-semibold pl-2 border-l-4 border-gray-500">
+              <h2 className="text-xl font-semibold pl-2 border-l-4 border-blue-500 rounded">
                 Your Tasks ({tasks.length})
               </h2>
               {loading ? (
@@ -123,10 +114,6 @@ const TodoList = () => {
         </div>
       </div>
 
-      {/* Optional Calendar / Right Section */}
-      <div className="w-1/2 hidden lg:flex flex-col items-center justify-center h-[80vh] rounded-2xl backdrop-blur-sm p-6 border border-gray-700">
-        {/* <TaskCalendar /> */}
-      </div>
       <ToastContainer />
     </div>
   );

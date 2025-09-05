@@ -3,7 +3,7 @@ import TodoList from "./TodoList";
 import Greetings from "./Greetings";
 const TaskHome = () => {
   return (
-    <div className="flex flex-col gap-2 py-4 px-2 items-center justify-center">
+    <div className="flex flex-col gap-2  p-1 md:p-3 items-center justify-center w-full h-[100vh]">
       <Greetings />
       <TodoList />
     </div>

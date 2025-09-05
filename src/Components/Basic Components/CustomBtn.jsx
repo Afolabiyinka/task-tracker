@@ -1,24 +1,65 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@material-tailwind/react";
+import styled from "styled-components";
 
-const CustomBtn = ({ linkpath, text, click }) => {
+const CustomBtn = () => {
   return (
-    <div>
-      <Link to={linkpath}>
-        <Button
-          color="secondary"
-          size="lg"
-          className="bg-blue-600 rounded-lg flex gap-1 font-sans font-semibold  hover:bg-blue-500 transition-all text-white duration-700 ease-in-out"
-          onClick={click}
+    <StyledWrapper>
+      <button>
+        <span className="text">Get Started</span>
+        <svg
+          width={34}
+          height={34}
+          viewBox="0 0 74 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {text}
-          {/* <ArrowRight /> */}
-        </Button>
-      </Link>
-    </div>
+          <circle cx={37} cy={37} r="35.5" stroke="white" strokeWidth={3} />
+          <path
+            d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+            fill="white"
+          />
+        </svg>
+      </button>
+    </StyledWrapper>
   );
 };
+
+const StyledWrapper = styled.div`
+  button {
+    cursor: pointer;
+    font-weight: 700;
+    font-family: Helvetica, "sans-serif";
+    transition: all 0.2s;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background: #0400ff;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  button:hover {
+    background: #0400ff;
+  }
+
+  .text {
+    color: #fff;
+  }
+
+  button > svg {
+    width: 34px;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  button:hover svg {
+    transform: translateX(5px);
+  }
+
+  button:active {
+    transform: scale(0.95);
+  }
+`;
 
 export default CustomBtn;
