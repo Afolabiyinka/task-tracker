@@ -8,11 +8,7 @@ import {
 import StarRating from "./StarRating";
 function ReviewCard({ review }) {
   return (
-    <Card
-      className="max-w-lg  h-full p-2 shadow-lg transition-all duration-300"
-      color="secondary"
-      variant="outline"
-    >
+    <Card className="max-w-lg  h-full p-2 shadow-lg transition-all duration-300 border-none">
       <CardBody>
         <span className="flex gap-2 items-center">
           <Avatar src={review.image} className="ring-1" />

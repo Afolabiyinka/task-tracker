@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView as useReactInView } from "react-intersection-observer";
-import Loader from "../../Components/Basic Components/Loader";
 import ReviewCard from "../../Components/Basic Components/ReviewCard";
 import ReviewsData from "../../Server.json";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // Setup intersection observer for the section heading
   const [headingRef, headingInView] = useReactInView({
@@ -22,19 +20,11 @@ const Reviews = () => {
   });
 
   useEffect(() => {
-    try {
-      if (ReviewsData && ReviewsData.users) {
-        setReviews(ReviewsData.users);
-      }
-
-      // Simulate loading delay
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    } catch (err) {
-      console.error("Error loading Reviews:", err);
-      setLoading(false);
+    if (ReviewsData && ReviewsData.users) {
+      setReviews(ReviewsData.users);
     }
+
+    // Simulate loading delay
   }, []);
 
   // Animation variants
@@ -69,16 +59,8 @@ const Reviews = () => {
     },
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader />
-      </div>
-    );
-  }
-
   return (
-    <div className="h-fit shadow-sm flex flex-col items-center gap-9 px-4 py-6 md:py-12 justify-center">
+    <div className="h-fit shadow-sm flex flex-col items-center gap-9 px-4 py-6 md:py-16 justify-center">
       <motion.h1
         ref={headingRef}
         className="text-3xl font-bold text-center"

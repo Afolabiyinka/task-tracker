@@ -99,7 +99,7 @@ const Features = () => {
         Why Choose Our Task Manager?
       </motion.h2>
 
-      <div className="flex flex-col md:flex-row justify-center items-center gap-4">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-4">
         <motion.div
           ref={featuresRef}
           initial="hidden"
@@ -116,7 +116,7 @@ const Features = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
-              className="px-6 py-2 rounded-2xl flex gap-4 items-center  transition-all duration-300 shadow-sm"
+              className="px-6 py-2 rounded-2xl flex gap-4 items-center  transition-all duration-300"
             >
               <div className="p-3 rounded-xl flex items-center justify-center">
                 <Icon size={28} color={color} />

@@ -9,7 +9,7 @@ const Home = () => {
   const screenshot = theme === "dark" ? blackScreenShot : whiteScreenShot;
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center h-full w-full px-4 lg:px-12 py-6 gap-10 relative overflow-hidden">
+    <div className="flex flex-col lg:flex-row justify-center items-center h-full w-full px-4 lg:px-12 py-2 gap-10 relative overflow-hidden">
       {/* Background */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -35,7 +35,7 @@ const Home = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="md:text-4xl lg:text-5xl text-2xl text-gray-500 dark:text-gray-300 tracking-wide"
         >
-          all in one place
+          All in one place
         </motion.p>
 
         <motion.p

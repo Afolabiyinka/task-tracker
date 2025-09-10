@@ -9,6 +9,7 @@ import { Home, X, Mail, CircleCheck, DollarSign, Menu } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import CustomBtn from "../Components/Basic Components/CustomBtn";
 
 const LINKS = [
   { icon: Home, title: "Home", href: "/" },
@@ -28,10 +29,10 @@ function NavList({ onClick }) {
         >
           <Link
             to={href}
-            className="flex items-center gap-x-2 p-1  hover:text-gray-300"
+            className="flex items-center gap-x-2 p-1  hover:text-gray-600"
             onClick={onClick}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-5 w-5 stroke-[1.5px]" />
             <Typography type="small">{title}</Typography>
           </Link>
         </li>
@@ -52,7 +53,7 @@ export default function DarkNavbar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto w-full bg-inherit p-3 border-none mb-1 shadow-sm z-50">
+    <Navbar className="mx-auto w-full bg-inherit p-4 border-none mb-1 shadow-sm z-50">
       <div className="flex items-center">
         <a
           href="/"
@@ -67,18 +68,18 @@ export default function DarkNavbar() {
           <NavList />
         </div>
 
-        <Link
+        {/* <Link
           to="/auth/login"
           className="ease-in-out lg:ml-auto lg:inline-block"
         >
-          <Button
+          <span
             size="md"
             variant="solid"
             className="hidden bg-blue-600 px-8 py-2 border-none rounded-lg gap-1 font-sans font-semibold hover:bg-blue-500 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
           >
             Log in
-          </Button>
-        </Link>
+          </span>
+        </Link> */}
 
         <IconButton
           size="sm"

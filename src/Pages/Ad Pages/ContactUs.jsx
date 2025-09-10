@@ -133,7 +133,7 @@ const Form = () => {
       <motion.img
         src={undrawPDF}
         alt="Feedback Illustration"
-        className="w-[60%] rounded-xlshadow-md  object-cover h-[80%] hidden lg:block"
+        className="w-[60%] rounded-xlshadow-md  object-cover h-[80%] hidden lg:block p-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.5 }}
