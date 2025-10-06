@@ -55,7 +55,7 @@ const Login = () => {
         variants={slideUpVariants}
       >
         <motion.div
-          className="w-full max-w-md  rounded-xl shadow-lg p-6 border-[1px]"
+          className="w-fit h-fit max-w-md  rounded-xl shadow-lg p-16 border-[1px]"
           variants={slideUpVariants}
         >
           <motion.h2
@@ -66,17 +66,20 @@ const Login = () => {
           </motion.h2>
 
           <motion.form
-            className="space-y-5"
+            className="flex flex-col gap-6"
             onSubmit={handleLogin}
             variants={slideUpVariants}
           >
             <motion.div className="relative" variants={slideUpVariants}>
-              <Mail className="absolute inset-y-0 right-3 top-3 " size={27} />
+              <Mail
+                className="absolute inset-y-0 right-3 top-3 z-50"
+                size={27}
+              />
               <Input
                 placeholder="Email address"
                 color="secondary"
                 variant="solid"
-                className="w-full border-[1px] rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className=" border-[1px] rounded-xl p-5  px-8focus:outline-none focus:ring-2 focus:ring-blue-500"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -85,7 +88,7 @@ const Login = () => {
             <motion.div className="relative" variants={slideUpVariants}>
               <Input
                 placeholder="Password"
-                className="w-full  rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+                className="w-full  rounded-xl p-5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-14"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -117,7 +120,7 @@ const Login = () => {
 
             <motion.div variants={slideUpVariants}>
               <Button
-                className="w-full bg-gradient-to-r from-indigo-500 to-  blue-500  font-bold py-3 rounded-md hover:bg-indigo-600 transition duration-200"
+                className="w-full bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-md hover:bg-indigo-600 hover:to-blue-700 transition duration-200"
                 type="submit"
                 variant="solid"
               >
@@ -125,9 +128,6 @@ const Login = () => {
               </Button>
             </motion.div>
 
-            {/* <motion.div variants={slideUpVariants} className="mt-3">
-              <GoogleBtn />
-            </motion.div> */}
             <p className="text-sm text-center mt-4">
               Don't have an account?
               <Link

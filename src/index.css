@@ -16,8 +16,8 @@
   transition: all 0.6s;
 }
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -38,7 +38,7 @@
 }
 
 ::-webkit-scrollbar-vertical {
-  width: 8px;
+  width: 7px;
 }
 /* Global CSS or your component's CSS file */
 input::placeholder {

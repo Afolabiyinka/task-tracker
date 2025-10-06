@@ -2,12 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const CustomBtn = ({ path }) => {
+const CustomBtn = ({ path, text }) => {
   return (
     <StyledWrapper>
       <Link to={path}>
         <button>
-          <span className="text">Get Started</span>
+          <span className="text">{text || "Get Started"}</span>
           <svg
             width={34}
             height={34}

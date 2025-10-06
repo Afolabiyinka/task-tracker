@@ -88,7 +88,7 @@ const Features = () => {
   };
 
   return (
-    <div className="py-6 px-4 h-fit shadow-sm">
+    <div className="py-6 px-4 h-full w-full shadow-sm">
       <motion.h2
         ref={titleRef}
         initial="hidden"
@@ -105,7 +105,7 @@ const Features = () => {
           initial="hidden"
           animate={featuresInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="w-full md:w-[45%] flex flex-col gap-5"
+          className="w-full md:w-[50%] flex flex-col gap-5"
         >
           {LINKS.map(({ emoji: Icon, title, color }) => (
             <motion.div
@@ -116,7 +116,7 @@ const Features = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
-              className="px-6 py-2 rounded-2xl flex gap-4 items-center  transition-all duration-300"
+              className="px-6 py-4 rounded-2xl  flex gap-4 items-center w-full  transition-all duration-300"
             >
               <div className="p-3 rounded-xl flex items-center justify-center">
                 <Icon size={28} color={color} />
@@ -133,7 +133,7 @@ const Features = () => {
           initial="hidden"
           animate={imageInView ? "visible" : "hidden"}
           variants={imageVariants}
-          className="w-full md:w-[50%] max-w-lg h-full"
+          className="w-full md:w-[50%] max-w-2xl h-full bg-inherit"
         >
           <div className="relative rounded-2xl overflow-hidden shadow-2xl flex justify-center  items-center">
             <img

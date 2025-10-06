@@ -54,7 +54,7 @@ const Home = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <CustomBtn text="Try it now" linkpath="/auth/login" />
+          <CustomBtn text="Try it now" path="/auth/login" />
         </motion.div>
       </div>
 

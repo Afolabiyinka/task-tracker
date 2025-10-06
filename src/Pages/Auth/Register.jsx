@@ -83,12 +83,12 @@ const Register = () => {
 
   return (
     <motion.div
-      className="h-[90vh] flex items-center justify-center p-4"
+      className="h-[90vh] flex items-center justify-center p-6"
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="max-w-3xl rounded-lg shadow-md p-6 md:p-12 mx-1.5 border-[2px]"
+        className="max-w-3xl rounded-lg shadow-md p-6 md:p-6 mx-1.5 border-[2px]"
         variants={slideUpVariants}
       >
         <motion.h2
@@ -98,15 +98,18 @@ const Register = () => {
           Create a new account
         </motion.h2>
         <motion.form
-          className="flex flex-col gap-4 text-gray-600"
+          className="flex flex-col gap-4 p-8 text-gray-600 w-fit"
           onSubmit={handleRegister}
           variants={slideUpVariants}
         >
           <motion.div className="relative">
-            <User className="absolute inset-y-0 right-3 top-3 " size={27} />
+            <User
+              className="absolute inset-y-0 right-3 top-3 z-50 "
+              size={27}
+            />
             <Input
               placeholder="Username"
-              className="w-full  rounded-md p-3  focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full  rounded-md p-5  focus:outline-none focus:ring-2 focus:ring-blue-500"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -114,11 +117,11 @@ const Register = () => {
               variant="solid"
             />
           </motion.div>
-          <motion.div className="relative">
-            <Mail className="absolute inset-y-0 right-3 top-3" size={27} />
+          <motion.div className="relative w-full">
+            <Mail className="absolute inset-y-0 right-3 top-3 z-50" size={27} />
             <Input
               placeholder="Email address"
-              className="w-full  rounded-md p-3  focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className=" rounded-md p-5  focus:outline-none focus:ring-2 focus:ring-blue-500 pr-[6rem]"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -127,10 +130,10 @@ const Register = () => {
               variant="solid"
             />
           </motion.div>
-          <motion.div className="relative" variants={slideUpVariants}>
+          <motion.div className="relative w-full" variants={slideUpVariants}>
             <Input
               placeholder="Password"
-              className="w-full rounded-md p-3  focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
+              className="w-full rounded-md p-5  focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -139,7 +142,7 @@ const Register = () => {
             />
             <button
               type="button"
-              className=" absolute inset-y-0 right-3 top-0.5"
+              className=" absolute inset-y-0 right-3 top-0.5 z-50"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <EyeOff size={27} /> : <Eye size={27} />}

@@ -22,7 +22,7 @@ const TodoList = () => {
   } = useTasks();
 
   return (
-    <div className="w-full md:w-[50%] min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
+    <div className="w-full lg:w-[50%] min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
       <div className="w-full min-h-[60vh] md:min-h-[80vh] rounded-2xl  text-lg md:text-xl flex flex-col  items-center gap-4 p-4 ">
         <h1 className="text-3xl md:text-4xl flex gap-3 items-center font-bold">
           <span>Add a new Task</span>
@@ -39,7 +39,7 @@ const TodoList = () => {
                 color="secondary"
                 value={taskInput}
                 onChange={(e) => setTaskInput(e.target.value)}
-                className="rounded-lg border border-gray-600 shadow-lg pr-0.5 ring-0 placeholder-gray-400"
+                className="rounded-lg border p-4 border-gray-600 shadow-lg pr-0.5 ring-0 placeholder-gray-400"
                 placeholder="Walk the dog 🐕‍🦺"
               />
               <Select
@@ -47,7 +47,7 @@ const TodoList = () => {
                 value={priority}
                 onChange={(value) => setPriority(value)}
               >
-                <Select.Trigger placeholder="Priority" className="w-36 p-2.5" />
+                <Select.Trigger placeholder="Priority" className="w-36 p-4" />
                 <Select.List className="w-32 border border-gray-600 rounded-lg">
                   <Select.Option value="low">Low</Select.Option>
                   <Select.Option value="medium">Medium</Select.Option>
@@ -56,18 +56,23 @@ const TodoList = () => {
               </Select>
             </div>
             <motion.span whileTap={{ scale: 0.97 }}>
-              <Button color="secondary" variant="solid" type="submit">
+              <Button
+                color="secondary"
+                variant="solid"
+                type="submit"
+                className="w-full bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700 text-white transition duration-200"
+              >
                 Add Task
               </Button>
             </motion.span>
           </div>
         </form>
 
-        <div className="w-full flex flex-col items-center justify-center">
+        <div className="w-full h-full flex flex-col items-center justify-center">
           {tasks.length === 0 ? (
-            <div className="h-full w-full flex flex-col justify-center font-mono items-center">
+            <div className="h-full w-full max-h-72 flex flex-col justify-center font-mono items-center">
               <motion.div
-                className="text-center p-12 rounded-xl border border-gray-600"
+                className="text-center p-16 rounded-xl border border-gray-600"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

@@ -1,18 +1,17 @@
 import React from "react";
 import { Typography, Button } from "@material-tailwind/react";
 import { Flag } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import CustomBtn from "../../Components/Basic Components/CustomBtn";
 
 function ErrorSection() {
-  const navigate = useNavigate();
-
   return (
     <div className="h-screen mx-auto flex flex-col items-center justify-center text-center px-8">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex flex-col items-center justify-center"
       >
         <Flag className="w-20 h-20 mx-auto text-red-500" />
         <Typography
@@ -26,14 +25,9 @@ function ErrorSection() {
           Don&apos;t worry, our team is already on it. Please refresh the page
           or try again later.
         </Typography>
-        <Button
-          color="primary"
-          variant="solid"
-          className="w-full  px-4 md:w-[10rem]"
-          onClick={() => navigate("/")}
-        >
-          Back Home
-        </Button>
+        <span className="flex flex-col items-center justify-center">
+          <CustomBtn text={`Back Home`} path="/" />
+        </span>
       </motion.div>
     </div>
   );
