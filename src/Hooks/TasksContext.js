@@ -19,7 +19,6 @@ export function TasksProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
 
-  // Fetch tasks once component mounts
   useEffect(() => {
     setLoading(true);
     async function fetchTasks() {
@@ -38,6 +37,7 @@ export function TasksProvider({ children }) {
 
         if (response.ok) {
           setTasks(data.tasks);
+          setLoading(false);
         }
       } catch (error) {
         setLoading(false);
@@ -74,7 +74,7 @@ export function TasksProvider({ children }) {
     const token = localStorage.getItem("Tm-token");
 
     try {
-      setLoading(true);
+      // setLoading(true);
       const response = await fetch(
         "https://taskmaster-project-hi5d.onrender.com/tasks",
         {
@@ -119,7 +119,7 @@ export function TasksProvider({ children }) {
       return;
     }
 
-    setLoading(true);
+    // setLoading(true);
 
     try {
       const response = await fetch(
@@ -150,7 +150,7 @@ export function TasksProvider({ children }) {
         position: "top-center",
       });
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   }
 
