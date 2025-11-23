@@ -43,7 +43,7 @@ const Register = () => {
 
       if (response.ok) {
         localStorage.setItem("username", username);
-        toastSuccess("Resgistered succesfully");
+        toastSuccess("Resgistered succesfully.");
         setTimeout(() => {
           window.location.href = "/auth/login";
         }, 2000);
