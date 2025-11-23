@@ -19,16 +19,16 @@ const TodoList = () => {
   } = useTasks();
 
   return (
-    <div className="w-full lg:w-[50%] min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
-      <div className="w-full min-h-[60vh] md:min-h-[80vh] rounded-2xl  text-lg md:text-xl flex flex-col  items-center gap-4 p-4 ">
-        <h1 className="text-3xl md:text-4xl flex gap-3 items-center font-bold">
+    <div className="w-full  min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
+      <div className="w-full min-h-[60vh] md:min-h-[80vh] rounded-2xl  text-lg md:text-xl flex flex-col  items-center gap-4 p-2 ">
+        <h1 className="text-3xl md:text-5xl flex gap-3 items-center font-bold">
           <span>Add a new Task</span>
-          <CheckCircle size={28} />
+          <CheckCircle size={40} />
         </h1>
 
         <form onSubmit={addTodo} className="w-full max-w-md ">
-          <div className="flex gap-4 flex-col text-white">
-            <div className="flex gap-3 items-center justify-center">
+          <div className="flex gap-4 flex-col text-white w-full">
+            <div className="flex gap-3 items-center justify-center  w-full">
               <Input
                 type="text"
                 size="lg"
@@ -39,14 +39,14 @@ const TodoList = () => {
                 placeholder="Walk the dog 🐕‍🦺"
               />
               <Select
-                size="sm"
+                size="lg"
                 value={priority}
                 onChange={(value) => {
                   console.log(value);
                   setPriority(value);
                 }}
               >
-                <Select.Trigger placeholder="Priority" className="w-36 p-4" />
+                <Select.Trigger placeholder="Priority" className="w-26 py-3" />
                 <Select.List className="w-32 border border-gray-600 rounded-lg">
                   <Select.Option value="low">Low</Select.Option>
                   <Select.Option value="medium">Medium</Select.Option>
@@ -69,15 +69,15 @@ const TodoList = () => {
 
         <div className="w-full h-full flex flex-col items-center justify-center">
           {tasks.length === 0 ? (
-            <div className="h-full w-full max-h-72 flex flex-col justify-center font-mono items-center">
+            <div className="h-full w-full max-h-96 flex flex-col justify-center font-mono items-center">
               <motion.div
-                className="text-center p-16 rounded-xl border border-gray-600"
+                className="text-center p-16 rounded-xl border border-gray-300"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="flex justify-center items-center animate-bounce">
-                  <ClipboardX size={50} />
+                  <ClipboardX size={80} />
                 </div>
                 <p className="mt-2">Add your first task to get started</p>
               </motion.div>

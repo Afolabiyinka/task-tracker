@@ -22,7 +22,7 @@ const Greetings = ({ tasks }) => {
   const taskText = taskCount === 1 ? "task" : "tasks";
 
   return (
-    <div className="w-full lg:w-[50%] rounded-xl shadow p-6 relative">
+    <div className="w-full  rounded-xl shadow p-6 relative">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Icon size={36} className="text-yellow-300" />

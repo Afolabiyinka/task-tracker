@@ -15,27 +15,32 @@ export const Task = ({
 }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const taskRef = useRef(null);
-  const [taskSize, setTaskSize] = useState({ width: 0, height: 0, x: 0, y: 0 });
+  const [taskSize, setTaskSize] = useState({
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0,
+  });
 
+  // Track element size for confetti
   useEffect(() => {
     if (taskRef.current && showConfetti) {
       const rect = taskRef.current.getBoundingClientRect();
       setTaskSize({
-        width: rect.width + 50,
-        height: rect.height + 50,
-        x: rect.x - 25,
-        y: rect.y - 25,
+        width: rect.width,
+        height: rect.height,
+        x: rect.left,
+        y: rect.top,
       });
     }
   }, [showConfetti]);
 
   const handleComplete = (checked) => {
     completeTask(id, checked);
-    if (checked) {
-      setShowConfetti(true);
-    }
+    if (checked) setShowConfetti(true);
   };
 
+  // Hide confetti after 3 seconds
   useEffect(() => {
     if (showConfetti) {
       const timer = setTimeout(() => setShowConfetti(false), 3000);
@@ -46,71 +51,68 @@ export const Task = ({
   const getPriorityColor = () => {
     if (priority === "High") return "bg-red-100 text-red-600";
     if (priority === "Medium") return "bg-amber-100 text-amber-600";
-    return "bg-blue-100 text-blue-800"; // Default to dark blue
+    return "bg-blue-100 text-blue-800";
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
+      {/* CONFETTI */}
       {showConfetti && (
         <div
-          className="absolute pointer-events-none z-50"
+          className="pointer-events-none fixed z-50"
           style={{
-            position: "fixed",
             left: taskSize.x,
             top: taskSize.y,
             width: taskSize.width,
             height: taskSize.height,
-            overflow: "visible",
           }}
         >
           <Confetti
             width={taskSize.width}
             height={taskSize.height}
+            numberOfPieces={120}
             recycle={false}
-            numberOfPieces={100}
-            confettiSource={{
-              x: taskSize.width / 2,
-              y: taskSize.height / 2,
-              w: 0,
-              h: 0,
-            }}
-            colors={["#1e3a8a", "#3b82f6", "#93c5fd", "#ffffff"]}
           />
         </div>
       )}
+
+      {/* TASK CARD */}
       <motion.div
         ref={taskRef}
-        className="flex justify-between items-center rounded-lg shadow-sm border border-blue-200 py-4 px-4 md:mx-6 my-2   transition-colors"
+        className="flex w-full justify-between items-start gap-3 rounded-lg shadow-sm 
+        border border-blue-200 py-3 px-3 my-2 transition-colors bg-white"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        whileHover={{ scale: 1.01 }}
       >
-        <div className="flex gap-3 items-center overflow-hidden py-1 w-full">
+        <div className="flex gap-3 items-start w-full">
+          {/* Checkbox */}
           <CheckboxDemo
             color="secondary"
             checked={completed}
             onChange={(e) => handleComplete(e.target.checked)}
           />
-          <div className="flex flex-col md:flex-row md:items-center gap-2 w-full">
+
+          <div className="flex flex-col gap-1 w-full min-w-0">
             <Typography
-              className={`text-wrap font-medium ${
-                completed ? "line-through text-gray-500" : "text-inherit"
+              className={`break-words text-sm md:text-base font-medium ${
+                completed ? "line-through text-gray-500" : "text-gray-800"
               }`}
             >
               {title}
             </Typography>
+
             {priority && (
               <span
-                className={`text-xs px-2 py-1 rounded-full ${getPriorityColor()} font-medium inline-block`}
+                className={`text-xs px-2 py-1 rounded-full ${getPriorityColor()} font-medium w-fit`}
               >
                 {priority}
               </span>
             )}
           </div>
         </div>
+
         <motion.button
-          className="p-2 rounded-full hover:bg-blue-200 text-blue-700 hover:text-blue-900 transition-colors"
+          className="p-2 rounded-full hover:bg-blue-200 text-blue-700 hover:text-blue-900"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => deleteTask(id)}
