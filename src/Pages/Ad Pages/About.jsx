@@ -1,6 +1,3 @@
-import React from "react";
-import { ReactTyped } from "react-typed";
-
 import taskHomeImage from "../../Assets/ToDo Task List.gif";
 
 const About = () => {
