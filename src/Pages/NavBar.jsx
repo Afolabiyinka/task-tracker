@@ -7,9 +7,8 @@ import {
 } from "@material-tailwind/react";
 import { Home, X, Mail, CircleCheck, DollarSign, Menu } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import CustomBtn from "../Components/Basic Components/CustomBtn";
 
 const LINKS = [
   { icon: Home, title: "Home", href: "/" },
@@ -19,23 +18,21 @@ const LINKS = [
 ];
 
 function NavList({ onClick }) {
-  const location = useLocation();
   return (
     <ul className="mt-4 flex flex-col gap-x-9 gap-y-4 lg:mt-0 lg:flex-row lg:items-center">
       {LINKS.map(({ icon: Icon, title, href }) => (
-        <li
-          key={title}
-          className={`${location.pathname === href ? "underline" : ""} `}
+        <NavLink
+          to={href}
+          className={({ isActive }) =>
+            `w-full h-10 flex items-center gap-3 justify-start ${
+              isActive ? "underline-offset-4  underline" : ""
+            }`
+          }
+          onClick={onClick}
         >
-          <Link
-            to={href}
-            className="flex items-center gap-x-2 p-1  hover:text-gray-600"
-            onClick={onClick}
-          >
-            <Icon className="h-5 w-5 stroke-[1.5px]" />
-            <Typography type="small">{title}</Typography>
-          </Link>
-        </li>
+          <Icon className="h-5 w-5 stroke-[1.5px]" />
+          <Typography type="small">{title}</Typography>
+        </NavLink>
       ))}
     </ul>
   );
@@ -68,18 +65,18 @@ export default function DarkNavbar() {
           <NavList />
         </div>
 
-        {/* <Link
+        <Link
           to="/auth/login"
           className="ease-in-out lg:ml-auto lg:inline-block"
         >
           <span
             size="md"
             variant="solid"
-            className="hidden bg-blue-600 px-8 py-2 border-none rounded-lg gap-1 font-sans font-semibold hover:bg-blue-500 lg:ml-auto lg:inline-block transition-transform hover:scale-105 duration-700 ease-in-out "
+            className="px-16 bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
           >
             Log in
           </span>
-        </Link> */}
+        </Link>
 
         <IconButton
           size="sm"

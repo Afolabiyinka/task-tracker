@@ -1,45 +1,16 @@
-# Task Tracker 📝🔥
+# React + Vite
 
-![Home Page Screenshot](/public/Homepage.png)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-A full-featured task tracking web app built with **React** connected to a backend API. Manage your daily to-dos by creating an account, adding tasks, toggling reminders, and switching between light and dark modes! 🌗
+Currently, two official plugins are available:
 
-## 🚀 Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- ✍️ Add new tasks with name, day/time, and reminder toggle
-- 👤 User registration and login to save your tasks
-- ❌ Delete tasks you’ve completed or don’t need
-- 🌙 Light and dark mode toggle for your preference
-- 🎯 Clean, minimal UI for focused task management
-- 📱 Responsive design for mobile & desktop
+## React Compiler
 
-## 🛠️ Tech Stack
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- ⚛️ **Frontend**: React (functional components + hooks)
-- 🔗 **Backend**: Connected to REST API (Node.js, Express)
-- 🎨 **Styling**: Tailwind CSS
-- 🔄 **State Management**: React useState & useEffect hooks
-- 🛡️ **Authentication**: User account creation and login
+## Expanding the ESLint configuration
 
-## 💻 Getting Started
-
-Follow these steps to set up and run the Task Tracker project locally:
-
-## 1. Clone the repository
-
-```bash
-git clone https://github.com/Afolabiyinka/task-tracker.git
-cd task-tracker
-```
-
-2. Install dependencies
-
-```bash
-npm install
-```
-
-3. Start the development server
-
-```bash
- npm start
-```
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

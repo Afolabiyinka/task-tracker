@@ -1,13 +1,10 @@
-import React from "react";
-import { CheckCircle, ClipboardX, Frown } from "lucide-react";
-import { Input, Button, Select, Alert } from "@material-tailwind/react";
+import { CheckCircle, ClipboardX } from "lucide-react";
+import { Input, Button, Select } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
 import { useTasks } from "../../Hooks/TasksContext";
 import Loader from "../../Components/Basic Components/Loader";
-import { ToastContainer } from "react-toastify";
-// import TaskCalendar from "./Task Components/Calendar";
-
+import { Toaster } from "sonner";
 const TodoList = () => {
   const {
     addTodo,
@@ -35,7 +32,6 @@ const TodoList = () => {
               <Input
                 type="text"
                 size="lg"
-                required
                 color="secondary"
                 value={taskInput}
                 onChange={(e) => setTaskInput(e.target.value)}
@@ -45,7 +41,10 @@ const TodoList = () => {
               <Select
                 size="sm"
                 value={priority}
-                onChange={(value) => setPriority(value)}
+                onChange={(value) => {
+                  console.log(value);
+                  setPriority(value);
+                }}
               >
                 <Select.Trigger placeholder="Priority" className="w-36 p-4" />
                 <Select.List className="w-32 border border-gray-600 rounded-lg">
@@ -94,9 +93,9 @@ const TodoList = () => {
                 </div>
               ) : (
                 <div className="space-y-3 max-h-72 overflow-y-auto pr-2 task-container">
-                  {tasks.map((task) => (
+                  {tasks.map((task, index) => (
                     <motion.div
-                      key={task._id}
+                      key={index}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
@@ -119,7 +118,7 @@ const TodoList = () => {
         </div>
       </div>
 
-      <ToastContainer />
+      <Toaster position="top-right" />
     </div>
   );
 };

@@ -1,10 +1,8 @@
-import { Card, Typography, Button, Chip } from "@material-tailwind/react";
+import { Card, Typography, Chip } from "@material-tailwind/react";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import CustomBtn from "./CustomBtn";
 
 export default function PricingCard() {
-  const navigate = useNavigate();
   return (
     <Card className="max-w-xs">
       <Card.Header className="py-6 px-7 text-center">

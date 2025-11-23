@@ -1,5 +1,4 @@
-import React from "react";
-import { Typography, Button } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react";
 import { Flag } from "lucide-react";
 import { motion } from "framer-motion";
 import CustomBtn from "../../Components/Basic Components/CustomBtn";

@@ -1,5 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
+import { UserProvider } from "./Hooks/ValidateLogin";
+import { TasksProvider } from "./Hooks/TasksContext";
+import MainLayout from "./Pages/Ad Pages/MainLayout";
 
 // Lazy Loading our pages
 const HomePage = lazy(() => import("./Pages/HomePage"));
@@ -12,24 +15,73 @@ const ErrorSection = lazy(() => import("./Pages/Ad Pages/NotFound"));
 const TaskHome = lazy(() => import("./Pages/Tasks/TaskHome"));
 const Pricing = lazy(() => import("./Pages/Ad Pages/Pricing"));
 const Features = lazy(() => import("./Pages/Ad Pages/Feautures"));
+const AuthLayout = lazy(() => import("./Pages/Auth/AuthLayout"));
 
 const Router = () => {
-  return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/auth/login" element={<Login />} />
-        <Route path="/auth/register" element={<Register />} />
-        <Route path="/tasks" element={<TaskHome />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/feautures" element={<Features />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="*" element={<ErrorSection />} />
-      </Routes>
-    </>
-  );
+  const routes = [
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "about",
+          element: <About />,
+        },
+        {
+          path: "contact",
+          element: <Contact />,
+        },
+        {
+          path: "reviews",
+          element: <Reviews />,
+        },
+        {
+          path: "pricing",
+          element: <Pricing />,
+        },
+        {
+          path: "feautures",
+          element: <Features />,
+        },
+      ],
+    },
+    {
+      path: "/auth",
+      element: (
+        <UserProvider>
+          <AuthLayout />
+        </UserProvider>
+      ),
+      children: [
+        {
+          path: "login",
+          Component: Login,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <ErrorSection />,
+    },
+    {
+      path: "/tasks",
+      element: (
+        <TasksProvider>
+          <TaskHome />
+        </TasksProvider>
+      ),
+    },
+  ];
+  const routesModule = createBrowserRouter(routes);
+  return <RouterProvider router={routesModule}></RouterProvider>;
 };
 
 export default Router;

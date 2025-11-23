@@ -1,6 +1,6 @@
 import { useContext, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import useToastMessage from "../libs/useToastMsg";
 
 const UserContext = createContext();
 
@@ -13,7 +13,8 @@ export function UserProvider({ children }) {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState("");
+
+  const { toastError, toastSuccess } = useToastMessage();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -40,25 +41,21 @@ export function UserProvider({ children }) {
           localStorage.setItem("Tm-token", receivedToken);
           console.log(receivedToken);
 
-          toast.success("Login successful 🎉", {
-            position: "top-center",
-          });
+          toastSuccess("Login succesfull");
 
           setTimeout(() => navigate("/tasks"), 1000);
         } else {
-          toast.error("Token not found in response.");
+          toastError("Token not found in response");
         }
       } else {
         setLoading(false);
-        toast.error(
+        toastError(
           data.message || "Login failed! Please check your credentials."
         );
       }
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-center",
-      });
+      toastError("Something went wrong. Please try again.");
     }
   };
 

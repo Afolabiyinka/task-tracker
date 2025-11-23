@@ -1,16 +1,19 @@
-const { mtConfig } = require("@material-tailwind/react");
+import { mtConfig } from "@material-tailwind/react";
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+
+export default {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
+    "./index.html",
+
+    "./src/**/*.{js,ts,jsx,tsx}",
+
     "./node_modules/@material-tailwind/react/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
-    extend: {
-      fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
-      },
-    },
+    extend: {},
   },
+
   plugins: [mtConfig],
 };

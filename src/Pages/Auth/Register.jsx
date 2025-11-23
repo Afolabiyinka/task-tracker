@@ -4,10 +4,9 @@ import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import { Link } from "react-router-dom";
 import { User, Eye, EyeOff, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { Slide, toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Loader from "../../Components/Basic Components/Loader";
-
+import useToastMessage from "../../libs/useToastMsg";
+import { Toaster } from "sonner";
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
   visible: { y: 0, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } },
@@ -20,6 +19,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { toastError, toastSuccess } = useToastMessage();
 
   useEffect(() => {}, []);
 
@@ -43,21 +43,13 @@ const Register = () => {
 
       if (response.ok) {
         localStorage.setItem("username", username);
-        toast.success("Registration Successful!", {
-          position: "top-center",
-          theme: "dark",
-          transition: Slide,
-        });
+        toastSuccess("Resgistered succesfully");
         setTimeout(() => {
           window.location.href = "/auth/login";
         }, 2000);
       } else {
         setLoading(false);
-        toast.error(data.message || "Registration failed.", {
-          position: "top-center",
-          theme: "dark",
-          transition: Slide,
-        });
+        toastError(data.message || "Registration failed.");
       }
       if (rememberMe) {
         localStorage.setItem("token", data.token);
@@ -72,11 +64,7 @@ const Register = () => {
       }
     } catch (err) {
       setLoading(false);
-      toast.error("Something went wrong. Please try again.", {
-        position: "top-center",
-
-        transition: Slide,
-      });
+      toastError("Something went wrong. Please try again.");
       console.error("Error:", err);
     }
   }
@@ -173,7 +161,7 @@ const Register = () => {
           <motion.div variants={slideUpVariants}></motion.div>
         </motion.form>
       </motion.div>
-      <ToastContainer />
+      <Toaster position="top-right" />
     </motion.div>
   );
 };

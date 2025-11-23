@@ -27,7 +27,7 @@ export default function Footer() {
           Ice Chain labs
         </a>
       </Typography>
-      {/* <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+      <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
         {LINKS.map(({ title, href, index }) => (
           <li key={title}>
             <Typography
@@ -40,7 +40,7 @@ export default function Footer() {
             </Typography>
           </li>
         ))}
-      </ul> */}
+      </ul>
     </footer>
   );
 }

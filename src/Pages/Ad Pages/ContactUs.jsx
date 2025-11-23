@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { toast, ToastContainer, Slide } from "react-toastify";
+import { useState } from "react";
 import { Button, Input, Textarea } from "@material-tailwind/react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import undrawPDF from "../../Assets/undraw_feedback_ebmx.svg";
-
+import useToastMessage from "../../libs/useToastMsg";
+import { Toaster } from "sonner";
 const Form = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const { toastError, toastSuccess } = useToastMessage();
 
   const slideUpVariants = {
     hidden: { y: 50, opacity: 0 },
@@ -33,18 +34,10 @@ const Form = () => {
         "Yd4XI2oMRgjpPJKF5"
       )
       .then(() => {
-        toast.success("Message sent successfully!", {
-          position: "top-center",
-          theme: "dark",
-          transition: Slide,
-        });
+        toastSuccess("Message sent succesfully");
       })
       .catch(() => {
-        toast.error("Failed to send message. Please try again.", {
-          position: "top-center",
-          theme: "dark",
-          transition: Slide,
-        });
+        toastError("Failed to send message. Please try again.");
       })
       .finally(() => {
         setIsSending(false);
@@ -126,7 +119,7 @@ const Form = () => {
             </motion.div>
           </form>
 
-          <ToastContainer />
+          <Toaster />
         </motion.div>
       </div>
       <motion.img

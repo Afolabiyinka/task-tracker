@@ -3,12 +3,11 @@ import { Button, Input } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Eye, EyeOff, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import GoogleBtn from "./GoogleLogin";
 import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import Loader from "../../Components/Basic Components/Loader";
 import { ValidateLogin } from "../../Hooks/ValidateLogin";
+import { Toaster } from "sonner";
+import useToastMessage from "../../libs/useToastMsg";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -30,18 +29,16 @@ const Login = () => {
   } = ValidateLogin();
 
   const navigate = useNavigate();
-
+  const { toastSuccess } = useToastMessage();
   useEffect(() => {
     const storedUser = localStorage.getItem("Tm-token");
     if (storedUser) {
-      toast.success("Loggin In 🎉", {
-        position: "top-center",
-      });
+      toastSuccess("Logging in");
       setTimeout(() => {
         navigate("/tasks");
       }, 2000);
     }
-  });
+  }, []);
 
   return (
     <motion.div
@@ -49,7 +46,6 @@ const Login = () => {
       initial="hidden"
       animate="visible"
     >
-      <ToastContainer position="top-right" autoClose={3000} />
       <motion.div
         className="flex flex-col items-center justify-center "
         variants={slideUpVariants}
@@ -115,7 +111,9 @@ const Login = () => {
                 />
                 Remember Me
               </label>
-              <a className="text-blue-500 hover:underline">Forgot password?</a>
+              <a className="text-blue-500 hover:underline" href="#">
+                Forgot password?
+              </a>
             </motion.div>
 
             <motion.div variants={slideUpVariants}>
@@ -140,7 +138,7 @@ const Login = () => {
           </motion.form>
         </motion.div>
       </motion.div>
-      <ToastContainer />
+      <Toaster position="top-right" />
     </motion.div>
   );
 };
