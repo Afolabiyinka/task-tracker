@@ -72,7 +72,7 @@ export default function DarkNavbar() {
           <span
             size="md"
             variant="solid"
-            className="px-16 bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
+            className="px-16 bg-gradient-to-r hidden lg:block from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
           >
             Log in
           </span>
@@ -98,7 +98,7 @@ export default function DarkNavbar() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.1, ease: "easeInOut" }}
             className="lg:hidden mt-4"
           >
@@ -106,7 +106,7 @@ export default function DarkNavbar() {
             <Button
               size="sm"
               isFullWidth
-              className="mt-4 border-white hover:border-white"
+              className="px-16 bg-gradient-to-r mt-4 from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
               onClick={() => setOpenNav(false)}
             >
               <Link to="/auth/login">Log In</Link>

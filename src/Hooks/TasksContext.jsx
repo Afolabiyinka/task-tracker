@@ -23,7 +23,10 @@ export function TasksProvider({ children }) {
   const token = () => localStorage.getItem("Tm-token");
 
   async function fetchTasks() {
-    if (!token()) return toastError("Login required");
+    if (!token()) {
+      window.location.href = "/auth/login";
+      toastError("Login required");
+    }
 
     setLoading(true);
     toastLoading("Fetching tasks...");

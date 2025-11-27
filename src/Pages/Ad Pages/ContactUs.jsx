@@ -119,7 +119,7 @@ const Form = () => {
             </motion.div>
           </form>
 
-          <Toaster />
+          <Toaster position="top-right" />
         </motion.div>
       </div>
       <motion.img
