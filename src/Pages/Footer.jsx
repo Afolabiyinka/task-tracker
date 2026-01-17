@@ -20,14 +20,14 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="flex w-full h-fit p-1 flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 border-t border-surface py-4  px-3 text-center md:justify-between">
+    <footer className="flex w-full h-fit p-3 flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 border-t border-surface py-4  px-3 text-center md:justify-between">
       <Typography>
         &copy; {YEAR}{" "}
         <a href="https://github.com/Afolabiyinka" target="-blank">
           Ice Chain labs
         </a>
       </Typography>
-      <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+      <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 p-3">
         {LINKS.map(({ title, href, index }) => (
           <li key={title}>
             <Typography

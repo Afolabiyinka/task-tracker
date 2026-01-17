@@ -1,7 +1,7 @@
-import Home from "./Ad Pages/Home";
-import Reviews from "./Ad Pages/Reviews";
-import Form from "./Ad Pages/ContactUs";
-import Features from "./Ad Pages/Feautures";
+import Home from "./main/Home";
+import Reviews from "./main/Reviews";
+import Form from "./main/ContactUs";
+import Features from "./main/Feautures";
 
 const HomePage = () => {
   return (

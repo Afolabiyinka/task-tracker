@@ -39,10 +39,7 @@ export function UserProvider({ children }) {
 
         if (receivedToken) {
           localStorage.setItem("Tm-token", receivedToken);
-          console.log(receivedToken);
-
           toastSuccess("Login succesfull");
-
           setTimeout(() => navigate("/tasks"), 1000);
         } else {
           toastError("Token not found in response");

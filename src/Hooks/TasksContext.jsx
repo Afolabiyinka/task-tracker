@@ -24,7 +24,7 @@ export function TasksProvider({ children }) {
 
   async function fetchTasks() {
     if (!token()) {
-      window.location.href = "/auth/login";
+      // window.location.href = "/auth/login";
       toastError("Login required");
     }
 

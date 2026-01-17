@@ -17,7 +17,6 @@ const Greetings = ({ tasks }) => {
     Icon = Moon;
   }
 
-  // Show task count if available
   const taskCount = tasks?.length || 0;
   const taskText = taskCount === 1 ? "task" : "tasks";
 

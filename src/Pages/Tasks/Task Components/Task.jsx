@@ -80,7 +80,7 @@ export const Task = ({
       <motion.div
         ref={taskRef}
         className="flex w-full justify-between items-start gap-3 rounded-lg shadow-sm 
-        border border-blue-200 py-3 px-3 my-2 transition-colors bg-white"
+        border border-blue-200 py-3 px-3 my-2 transition-colors"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >

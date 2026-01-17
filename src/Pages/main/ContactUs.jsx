@@ -111,7 +111,7 @@ const Form = () => {
               <Button
                 type="submit"
                 variant="gradient"
-                className="px-16 bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700 transition duration-200"
+                className="px-16 bg-gradient-to-r border-0 from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700 transition duration-200"
                 disabled={isSending}
               >
                 {isSending ? "Sending..." : "Submit"}

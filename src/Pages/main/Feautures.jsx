@@ -5,19 +5,16 @@ import { Clipboard, CheckCheck, Clock } from "lucide-react";
 import svgAnimation from "../../Assets/undraw_to-do-list_eoia.svg";
 
 const Features = () => {
-  // Create a ref for the section title
   const [titleRef, titleInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // Create a ref for the features list
   const [featuresRef, featuresInView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // Create a ref for the image
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
     threshold: 0.3,
@@ -39,7 +36,6 @@ const Features = () => {
     },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -116,7 +112,7 @@ const Features = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
-              className="px-6 py-4 rounded-2xl  flex gap-4 items-center w-full  transition-all duration-300"
+              className="px-1 border py-4 rounded-2xl  flex gap-4 items-center w-full  transition-all duration-300"
             >
               <div className="p-3 rounded-xl flex items-center justify-center">
                 <Icon size={28} color={color} />
@@ -135,7 +131,7 @@ const Features = () => {
           variants={imageVariants}
           className="w-full md:w-[50%] max-w-2xl h-full bg-inherit"
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl flex justify-center  items-center">
+          <div className="relative rounded-2xl overflow-hidden  flex justify-center  items-center">
             <img
               src={svgAnimation}
               alt="Task manager animation"

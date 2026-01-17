@@ -9,6 +9,7 @@ import { Home, X, Mail, CircleCheck, DollarSign, Menu } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
 import { NavLink, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import CustomBtn from "../Components/Basic Components/CustomBtn";
 
 const LINKS = [
   { icon: Home, title: "Home", href: "/" },
@@ -65,18 +66,9 @@ export default function DarkNavbar() {
           <NavList />
         </div>
 
-        <Link
-          to="/auth/login"
-          className="ease-in-out lg:ml-auto lg:inline-block"
-        >
-          <span
-            size="md"
-            variant="solid"
-            className="px-16 bg-gradient-to-r hidden lg:block from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
-          >
-            Log in
-          </span>
-        </Link>
+        <span className="ease-in-out lg:ml-auto lg:inline-block">
+          <CustomBtn text={`Log in`} />
+        </span>
 
         <IconButton
           size="sm"

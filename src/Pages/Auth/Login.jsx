@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { Button, Input } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
-import { User, Eye, EyeOff, Mail } from "lucide-react";
+import { Button } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
+import { User, Mail, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 import CheckboxDemo from "../../Components/Basic Components/CheckBox";
 import Loader from "../../Components/Basic Components/Loader";
 import { ValidateLogin } from "../../Hooks/ValidateLogin";
 import { Toaster } from "sonner";
 import useToastMessage from "../../libs/useToastMsg";
+import { CustomInput } from "../../Components/Basic Components/Input";
 
 const slideUpVariants = {
   hidden: { y: 50, opacity: 0 },
@@ -27,18 +27,6 @@ const Login = () => {
     showPassword,
     setShowPassword,
   } = ValidateLogin();
-
-  const navigate = useNavigate();
-  const { toastSuccess } = useToastMessage();
-  useEffect(() => {
-    const storedUser = localStorage.getItem("Tm-token");
-    if (storedUser) {
-      toastSuccess("Logging in");
-      setTimeout(() => {
-        navigate("/tasks");
-      }, 2000);
-    }
-  }, []);
 
   return (
     <motion.div
@@ -66,40 +54,20 @@ const Login = () => {
             onSubmit={handleLogin}
             variants={slideUpVariants}
           >
-            <motion.div className="relative" variants={slideUpVariants}>
-              <Mail
-                className="absolute inset-y-0 right-3 top-3 z-50"
-                size={27}
-              />
-              <Input
-                placeholder="Email address"
-                color="secondary"
-                variant="solid"
-                
-                className=" border-[1px] rounded-xl p-5  px-8focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </motion.div>
-            <motion.div className="relative" variants={slideUpVariants}>
-              <Input
-                placeholder="Password"
-                className="w-full  rounded-xl p-5 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-14"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                color="secondary"
-                variant="solid"
-              />
-              <button
-                type="button"
-                className="absolute inset-y-0 right-3 flex items-center"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={24} /> : <Eye size={24} />}
-              </button>
-            </motion.div>
+            <CustomInput
+              icon={<Mail />}
+              value={email}
+              type="email"
+              placeholder={"Email"}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <CustomInput
+              icon={<Lock />}
+              type="password"
+              placeholder={"Password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <motion.div
               className="flex items-center justify-between text-sm"
               variants={slideUpVariants}

@@ -3,6 +3,7 @@ import blackScreenShot from "../../Assets/ScreenShots/Screenshot (106).png";
 import CustomBtn from "../../Components/Basic Components/CustomBtn";
 import { motion } from "framer-motion";
 import { useTheme } from "../../Contexts/ThemeContext";
+import { ArrowRightCircle } from "lucide-react";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -10,15 +11,6 @@ const Home = () => {
 
   return (
     <div className="flex flex-col lg:flex-row justify-center items-center h-full w-full px-4 lg:px-12 py-2 gap-10 relative overflow-hidden">
-      {/* Background */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        className=""
-      />
-
-      {/* Left side: Text content */}
       <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-5 max-w-2xl">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -47,15 +39,11 @@ const Home = () => {
           Efficiently manage your tasks and boost productivity
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <CustomBtn text="Try it now" path="/auth/login" />
-        </motion.div>
+        <CustomBtn
+          text="Try it now"
+          path="/auth/login"
+          icon={<ArrowRightCircle />}
+        />
       </div>
 
       {/* Right side: Floating Screenshot */}
