@@ -8,7 +8,7 @@ const TaskHome = () => {
     fetchTasks();
   }, []);
   return (
-    <div className="flex flex-col gap-2  p-1 md:p-3 items-center justify-center w-full h-[100vh]">
+    <div className="flex flex-col gap-2  items-center justify-center w-full h-screen overflow-y-hidden">
       <Greetings />
       <TodoList />
     </div>

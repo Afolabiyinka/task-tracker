@@ -19,8 +19,8 @@ const TodoList = () => {
   } = useTasks();
 
   return (
-    <div className="w-full  min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  ">
-      <div className="w-full min-h-[60vh] md:min-h-[80vh] rounded-2xl  text-lg md:text-xl flex flex-col  items-center gap-4 p-2 ">
+    <div className="w-full  min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  justify-center items-center overflow-y-scroll">
+      <div className="w-full rounded-lg  max-w-3xl text-lg md:text-xl flex flex-col  items-center gap-4 p-3 ">
         <h1 className="text-3xl md:text-5xl flex gap-3 items-center font-bold">
           <span>Add a new Task</span>
           <CheckCircle size={40} />
@@ -42,7 +42,6 @@ const TodoList = () => {
                 size="lg"
                 value={priority}
                 onChange={(value) => {
-                  console.log(value);
                   setPriority(value);
                 }}
               >
