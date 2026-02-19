@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Button, Input, Textarea } from "@material-tailwind/react";
+import { Textarea } from "@material-tailwind/react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import undrawPDF from "../../Assets/undraw_feedback_ebmx.svg";
 import useToastMessage from "../../libs/useToastMsg";
-import { Toaster } from "sonner";
+import { CustomInput } from "../../Components/custom/Input";
+import { Mail, User } from "lucide-react";
+import CustomBtn from "../../Components/custom/CustomBtn";
 const Form = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -31,7 +33,7 @@ const Form = () => {
         "service_ihm1kkq",
         "template_w17ojgm",
         formData,
-        "Yd4XI2oMRgjpPJKF5"
+        "Yd4XI2oMRgjpPJKF5",
       )
       .then(() => {
         toastSuccess("Message sent succesfully");
@@ -62,32 +64,35 @@ const Form = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-3">
+          <form
+            onSubmit={handleFormSubmit}
+            className="flex flex-col  justify-center items-center gap-4"
+          >
+            <div className="flex flex-col gap-3 w-full">
               <label htmlFor="name" className=" font-mono text-lg">
                 Your Name
               </label>
-              <Input
-                className=" rounded-xl p-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+              <CustomInput
+                icon={User}
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                variants={slideUpVariants}
               />
 
               <label htmlFor="email" className=" font-mono text-lg">
                 Your Email
               </label>
-              <Input
-                className=" rounded-xl p-5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+
+              <CustomInput
+                icon={Mail}
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                variants={slideUpVariants}
               />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 w-full">
               <label htmlFor="message" className=" font-mono text-lg">
                 How can we assist you better?
               </label>
@@ -108,18 +113,14 @@ const Form = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button
-                type="submit"
-                variant="gradient"
-                className="px-16 bg-gradient-to-r border-0 from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700 transition duration-200"
+              <CustomBtn
+                className={`w-full`}
                 disabled={isSending}
-              >
-                {isSending ? "Sending..." : "Submit"}
-              </Button>
+                loading={isSending}
+                children={isSending ? "Sending..." : "Submit"}
+              />
             </motion.div>
           </form>
-
-          <Toaster position="top-right" />
         </motion.div>
       </div>
       <motion.img

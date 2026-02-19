@@ -22,7 +22,7 @@ const StyledWrapper = styled.div`
   .dot-spinner {
     --uib-size: 2.8rem;
     --uib-speed: 0.9s;
-    --uib-color: #183153;
+    --uib-color: black;
     position: relative;
     display: flex;
     align-items: center;

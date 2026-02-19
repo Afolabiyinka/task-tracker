@@ -1,10 +1,13 @@
 import { CheckCircle, ClipboardX } from "lucide-react";
-import { Input, Button, Select } from "@material-tailwind/react";
+import { Select } from "@material-tailwind/react";
 import { Task } from "./Task Components/Task";
 import { motion } from "framer-motion";
 import { useTasks } from "../../Hooks/TasksContext";
-import Loader from "../../Components/Basic Components/Loader";
-import { Toaster } from "sonner";
+import Loader from "../../Components/loader/Loader";
+import CustomBtn from "../../Components/custom/CustomBtn";
+import { CustomInput } from "../../Components/custom/Input";
+import NoTasks from "./pages/NoTasks";
+
 const TodoList = () => {
   const {
     addTodo,
@@ -19,68 +22,59 @@ const TodoList = () => {
   } = useTasks();
 
   return (
-    <div className="w-full  min-h-[70vh] rounded-xl text-lg md:text-xl flex shadow p-1  justify-center items-center overflow-y-scroll">
-      <div className="w-full rounded-lg  max-w-3xl text-lg md:text-xl flex flex-col  items-center gap-4 p-3 ">
-        <h1 className="text-3xl md:text-5xl flex gap-3 items-center font-bold">
+    <div className="w-full min-h-[70vh] max-w-3xl rounded-xl text-lg md:text-xl flex shadow p-1  justify-center items-center overflow-y-scroll">
+      <div className="w-full rounded-lg   text-lg md:text-xl flex flex-col  items-center gap-4 p-3 ">
+        <h1 className="text-3xl md:text-5xl f font-semibold tracking-wider">
           <span>Add a new Task</span>
-          <CheckCircle size={40} />
         </h1>
 
-        <form onSubmit={addTodo} className="w-full max-w-md ">
-          <div className="flex gap-4 flex-col text-white w-full">
+        <form onSubmit={addTodo} className="w-full">
+          <div className="flex gap-4 flex-col  w-full">
             <div className="flex gap-3 items-center justify-center  w-full">
-              <Input
+              <CustomInput
+                className={`w-full`}
+                icon={CheckCircle}
                 type="text"
-                size="lg"
-                color="secondary"
+                placeholder="Walk the dog 🐕‍🦺"
                 value={taskInput}
                 onChange={(e) => setTaskInput(e.target.value)}
-                className="rounded-lg border p-4 border-gray-600 shadow-lg pr-0.5 ring-0 placeholder-gray-400"
-                placeholder="Walk the dog 🐕‍🦺"
               />
-              <Select
-                size="lg"
-                value={priority}
-                onChange={(value) => {
-                  setPriority(value);
-                }}
-              >
-                <Select.Trigger placeholder="Priority" className="w-26 py-3" />
-                <Select.List className="w-32 border border-gray-600 rounded-lg">
-                  <Select.Option value="low">Low</Select.Option>
-                  <Select.Option value="medium">Medium</Select.Option>
-                  <Select.Option value="high">High</Select.Option>
+              <Select size="lg" value={priority}>
+                <Select.Trigger
+                  placeholder="Priority"
+                  className="w-52 rounded-xl border"
+                />
+                <Select.List className="w-40 border  rounded-lg">
+                  <Select.Option
+                    onChange={() => setPriority("low")}
+                    value="low"
+                  >
+                    Low
+                  </Select.Option>
+                  <Select.Option
+                    onChange={() => setPriority("medium")}
+                    value="medium"
+                  >
+                    Medium
+                  </Select.Option>
+                  <Select.Option
+                    onChange={() => setPriority("high")}
+                    value="high"
+                  >
+                    High
+                  </Select.Option>
                 </Select.List>
               </Select>
             </div>
             <motion.span whileTap={{ scale: 0.97 }}>
-              <Button
-                color="secondary"
-                variant="solid"
-                type="submit"
-                className="w-full bg-gradient-to-r from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700 text-white transition duration-200"
-              >
-                Add Task
-              </Button>
+              <CustomBtn children={`Add Task`} className={`w-full`} />
             </motion.span>
           </div>
         </form>
 
-        <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-full  h-full flex flex-col items-center justify-center">
           {tasks.length === 0 ? (
-            <div className="h-full w-full max-h-96 flex flex-col justify-center font-mono items-center">
-              <motion.div
-                className="text-center p-16 rounded-xl border border-gray-300"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex justify-center items-center animate-bounce">
-                  <ClipboardX size={80} />
-                </div>
-                <p className="mt-2">Add your first task to get started</p>
-              </motion.div>
-            </div>
+            <NoTasks />
           ) : (
             <div className="flex flex-col gap-3 w-full justify-center">
               <h2 className="text-xl font-semibold pl-2 border-l-4 border-blue-500 rounded">
@@ -116,8 +110,6 @@ const TodoList = () => {
           )}
         </div>
       </div>
-
-      <Toaster position="top-right" />
     </div>
   );
 };

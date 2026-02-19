@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Trash } from "lucide-react";
-import CheckboxDemo from "../../../Components/Basic Components/CheckBox";
 import { Typography } from "@material-tailwind/react";
 import { motion } from "framer-motion";
 import Confetti from "react-confetti";
+import Checkbox from "../../../Components/custom/Checkbox";
 
 export const Task = ({
   title,
@@ -79,14 +79,14 @@ export const Task = ({
       {/* TASK CARD */}
       <motion.div
         ref={taskRef}
-        className="flex w-full justify-between items-start gap-3 rounded-lg shadow-sm 
-        border border-blue-200 py-3 px-3 my-2 transition-colors"
+        className="flex w-full justify-between items-center gap-3 rounded-2xl  shadow-sm 
+        border  py-3 px-3 my-2 transition-colors"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <div className="flex gap-3 items-start w-full">
+        <div className="flex gap-3 items-center w-full">
           {/* Checkbox */}
-          <CheckboxDemo
+          <Checkbox
             color="secondary"
             checked={completed}
             onChange={(e) => handleComplete(e.target.checked)}
@@ -103,7 +103,7 @@ export const Task = ({
 
             {priority && (
               <span
-                className={`text-xs px-2 py-1 rounded-full ${getPriorityColor()} font-medium w-fit`}
+                className={`text-xs px-2 py-1 rounded-full ${getPriorityColor()} font-medium w-12 flex justify-center items-center`}
               >
                 {priority}
               </span>
@@ -112,7 +112,7 @@ export const Task = ({
         </div>
 
         <motion.button
-          className="p-2 rounded-full hover:bg-blue-200 text-blue-700 hover:text-blue-900"
+          className="p-2 rounded-full hover:bg-black hover:text-white"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => deleteTask(id)}

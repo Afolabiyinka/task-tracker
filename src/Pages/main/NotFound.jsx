@@ -1,7 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import { Flag } from "lucide-react";
 import { motion } from "framer-motion";
-import CustomBtn from "../../Components/Basic Components/CustomBtn";
+import CustomBtn from "../../Components/custom/CustomBtn";
 
 function ErrorSection() {
   return (
@@ -25,7 +25,7 @@ function ErrorSection() {
           or try again later.
         </Typography>
         <span className="flex flex-col items-center justify-center">
-          <CustomBtn text={`Back Home`} path="/" />
+          <CustomBtn children={`Back Home`} path="/" />
         </span>
       </motion.div>
     </div>

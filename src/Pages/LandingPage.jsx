@@ -3,9 +3,9 @@ import Reviews from "./main/Reviews";
 import Form from "./main/ContactUs";
 import Features from "./main/Feautures";
 
-const HomePage = () => {
+const LandingPage = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col ">
       <Home />
       <Features />
       <Reviews />
@@ -14,4 +14,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LandingPage;

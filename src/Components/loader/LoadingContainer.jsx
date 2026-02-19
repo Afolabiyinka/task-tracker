@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const FallBackLoader = () => {
+const LoadingContainer = () => {
   return (
     <div className="h-screen w-screen flex justify-center items-center">
       <StyledWrapper>
@@ -72,4 +72,4 @@ const StyledWrapper = styled.div`
   }
 `;
 
-export default FallBackLoader;
+export default LoadingContainer;

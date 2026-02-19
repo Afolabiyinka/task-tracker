@@ -20,7 +20,7 @@ const LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="flex w-full h-fit p-3 flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 border-t border-surface py-4  px-3 text-center md:justify-between">
+    <footer className="flex w-full h-fit p-2 flex-row flex-wrap items-center justify-center gap-x-12 gap-y-3 border-t border-surface py-2  px-3 text-center md:justify-between">
       <Typography>
         &copy; {YEAR}{" "}
         <a href="https://github.com/Afolabiyinka" target="-blank">

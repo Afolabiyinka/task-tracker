@@ -1,22 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useInView as useReactInView } from "react-intersection-observer";
-import ReviewCard from "../../Components/Basic Components/ReviewCard";
+import ReviewCard from "../../Components/basic-components/ReviewCard";
 import ReviewsData from "../../Server.json";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   // Setup intersection observer for the section heading
-  const [headingRef, headingInView] = useReactInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const [gridRef, gridInView] = useReactInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
   useEffect(() => {
     if (ReviewsData && ReviewsData.users) {
@@ -57,21 +47,21 @@ const Reviews = () => {
   return (
     <div className="h-fit shadow-sm flex flex-col items-center gap-9 px-4 py-6 md:py-16 justify-center">
       <motion.h1
-        ref={headingRef}
         className="text-3xl font-bold text-center"
         initial="hidden"
-        animate={headingInView ? "visible" : "hidden"}
         variants={headingVariants}
+        whileInView="visible"
+        exit="hidden"
       >
         User Reviews
       </motion.h1>
 
       <motion.div
-        ref={gridRef}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 w-full px-4 gap-6 max-w-screen-xl"
         initial="hidden"
-        animate={gridInView ? "visible" : "hidden"}
         variants={gridVariants}
+        whileInView="visible"
+        exit="hidden"
       >
         {reviews.map((review, index) => (
           <motion.div

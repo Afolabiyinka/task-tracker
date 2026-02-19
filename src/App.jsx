@@ -1,18 +1,17 @@
 import { Suspense } from "react";
-import FallBackLoader from "./Components/Basic Components/FallBackLoader";
 import Footer from "./Pages/Footer";
 import Router from "./Routes";
+import { Toaster } from "sonner";
+import LoadingContainer from "./Components/loader/LoadingContainer";
 
 function App() {
   return (
     <>
-      <Suspense
-        fallback={
-          <FallBackLoader className="h-screen w-screen flex justify-center" />
-        }
-      >
+      <Suspense fallback={<LoadingContainer />}>
         <Router />
       </Suspense>
+      <Toaster position="top-right" />
+
       <Footer />
     </>
   );

@@ -5,7 +5,7 @@ import { TasksProvider } from "./Hooks/TasksContext";
 import MainLayout from "./Pages/main/MainLayout";
 
 // Lazy Loading our pages
-const HomePage = lazy(() => import("./Pages/HomePage"));
+const LandingPage = lazy(() => import("./Pages/LandingPage"));
 const Login = lazy(() => import("./Pages/Auth/Login"));
 const Register = lazy(() => import("./Pages/Auth/Register"));
 const Reviews = lazy(() => import("./Pages/main/Reviews"));
@@ -24,7 +24,7 @@ const Router = () => {
       children: [
         {
           index: true,
-          element: <HomePage />,
+          element: <LandingPage />,
         },
 
         {

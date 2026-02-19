@@ -1,10 +1,12 @@
 import { Card, Typography, Chip } from "@material-tailwind/react";
-import { CheckCircle } from "lucide-react";
-import CustomBtn from "./CustomBtn";
+import { ArrowRight, CheckCircle } from "lucide-react";
+import CustomBtn from "../custom/CustomBtn";
+import { useNavigate } from "react-router-dom";
 
 export default function PricingCard() {
+  const navigate = useNavigate();
   return (
-    <Card className="max-w-xs">
+    <Card className="max-w-xs rounded-2xl">
       <Card.Header className="py-6 px-7 text-center">
         <Chip
           size="lg"
@@ -44,7 +46,11 @@ export default function PricingCard() {
         </li>
       </Card.Body>
       <Card.Footer>
-        <CustomBtn path={`/auth/login`} />
+        <CustomBtn
+          children={`Try it now`}
+          onClick={() => navigate("/auth/login")}
+          icon={ArrowRight}
+        />
       </Card.Footer>
     </Card>
   );

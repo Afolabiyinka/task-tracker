@@ -7,9 +7,9 @@ import {
 } from "@material-tailwind/react";
 import { Home, X, Mail, CircleCheck, DollarSign, Menu } from "lucide-react";
 import tmLogo from "../../src/Assets/favicon-32x32.png";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import CustomBtn from "../Components/Basic Components/CustomBtn";
+import CustomBtn from "../Components/custom/CustomBtn";
 
 const LINKS = [
   { icon: Home, title: "Home", href: "/" },
@@ -23,6 +23,7 @@ function NavList({ onClick }) {
     <ul className="mt-4 flex flex-col gap-x-9 gap-y-4 lg:mt-0 lg:flex-row lg:items-center">
       {LINKS.map(({ icon: Icon, title, href }) => (
         <NavLink
+          key={href}
           to={href}
           className={({ isActive }) =>
             `w-full h-10 flex items-center gap-3 justify-start ${
@@ -41,6 +42,7 @@ function NavList({ onClick }) {
 
 export default function DarkNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -51,11 +53,11 @@ export default function DarkNavbar() {
   }, []);
 
   return (
-    <Navbar className="mx-auto w-full bg-inherit p-4 border-none mb-1 shadow-sm z-50">
+    <Navbar className="mx-auto w-full bg-inherit p-3 border-none mb-1 shadow-sm z-50">
       <div className="flex items-center">
         <a
           href="/"
-          className="ml-2 mr-6 flex text-lg items-center gap-1 "
+          className="ml-2 mr-6 flex text-2xl items-center gap-1  capitalize"
           onClick={() => setOpenNav(false)}
         >
           <img src={tmLogo} alt="Logo" className="rounded-lg object-cover" />
@@ -66,8 +68,11 @@ export default function DarkNavbar() {
           <NavList />
         </div>
 
-        <span className="ease-in-out lg:ml-auto lg:inline-block">
-          <CustomBtn text={`Log in`} />
+        <span className="ease-in-out hidden lg:ml-auto lg:inline-block">
+          <CustomBtn
+            children={`Log in`}
+            onClick={() => navigate("/auth/login")}
+          />
         </span>
 
         <IconButton
@@ -90,19 +95,18 @@ export default function DarkNavbar() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
-            className="lg:hidden mt-4"
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="lg:hidden mt-4 flex flex-col"
           >
             <NavList onClick={() => setOpenNav(false)} />
-            <Button
-              size="sm"
-              isFullWidth
-              className="px-16 bg-gradient-to-r mt-4 from-indigo-500 to-blue-500  font-bold py-3 rounded-xl hover:bg-indigo-600 hover:to-blue-700  text-white transition duration-200"
-              onClick={() => setOpenNav(false)}
-            >
-              <Link to="/auth/login">Log In</Link>
-            </Button>
+            <span className="w-full mt-4">
+              <CustomBtn
+                className={`w-full`}
+                children={`Log in`}
+                onClick={() => navigate("/auth/login")}
+              />
+            </span>
           </motion.div>
         )}
       </AnimatePresence>

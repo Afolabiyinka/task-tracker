@@ -24,7 +24,7 @@ export function TasksProvider({ children }) {
 
   async function fetchTasks() {
     if (!token()) {
-      // window.location.href = "/auth/login";
+      window.location.href = "/auth/login";
       toastError("Login required");
     }
 
@@ -36,7 +36,7 @@ export function TasksProvider({ children }) {
         "https://taskmaster-project-hi5d.onrender.com/tasks",
         {
           headers: { Authorization: `Bearer ${token()}` },
-        }
+        },
       );
 
       const data = await response.json();
@@ -74,6 +74,7 @@ export function TasksProvider({ children }) {
     toastLoading("Adding task...");
 
     try {
+      console.log(newTask);
       const response = await fetch(
         "https://taskmaster-project-hi5d.onrender.com/tasks",
         {
@@ -83,7 +84,7 @@ export function TasksProvider({ children }) {
             Authorization: `Bearer ${token()}`,
           },
           body: JSON.stringify(newTask),
-        }
+        },
       );
 
       const data = await response.json();
@@ -112,7 +113,7 @@ export function TasksProvider({ children }) {
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token()}` },
-        }
+        },
       );
 
       const data = await response.json();
@@ -142,14 +143,14 @@ export function TasksProvider({ children }) {
             Authorization: `Bearer ${token()}`,
           },
           body: JSON.stringify({ completed }),
-        }
+        },
       );
 
       const data = await response.json();
 
       if (response.ok) {
         setTasks((prev) =>
-          prev.map((task) => (task._id === id ? { ...task, completed } : task))
+          prev.map((task) => (task._id === id ? { ...task, completed } : task)),
         );
       } else {
         toastError(data.message || "Failed to update task");
