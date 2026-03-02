@@ -11,11 +11,11 @@ const CustomBtn = ({
 }) => {
   return (
     <motion.button
-      // whileHover={{ y: -7 }}
+      whileHover={{ y: -3 }}
       whileTap={{ scale: 0.9 }}
       onClick={onClick}
       disabled={disabled}
-      className={`p-3 bg-gradient-to-r bg-black  text-white flex gap-3  px-10   items-center justify-center rounded-2xl  transition-all duration-500 ${disabled ? "" : "hover:gap-4"}  hover:shadow border disabled:cursor-not-allowed disabled:bg-gray-500 ${className}`}
+      className={`p-3  bg-black  text-white flex gap-3 hover:bg-transparent hover:text-black  px-10   items-center justify-center rounded-2xl  transition-all duration-500 ${disabled ? "" : ""}  hover:shadow border disabled:cursor-not-allowed disabled:bg-gray-500 ${className}`}
     >
       <span>{loading && <Loader2 className="animate-spin" />}</span>
       <span className="">{children}</span>

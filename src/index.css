@@ -9,8 +9,7 @@
   color: black;
 }
 .dark {
-  /* background-color: rgb(44, 43, 43); */
-  background: linear-gradient(135deg, #081018 0%, #031516 100%);
+  background: #161616;
   color: white;
 }
 * {

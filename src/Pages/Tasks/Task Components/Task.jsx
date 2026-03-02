@@ -95,7 +95,7 @@ export const Task = ({
           <div className="flex flex-col gap-1 w-full min-w-0">
             <Typography
               className={`break-words text-sm md:text-base font-medium ${
-                completed ? "line-through text-gray-500" : "text-gray-800"
+                completed ? "line-through" : ""
               }`}
             >
               {title}
