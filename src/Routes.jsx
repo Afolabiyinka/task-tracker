@@ -1,20 +1,18 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy } from "react";
-import { UserProvider } from "./Hooks/ValidateLogin";
-import { TasksProvider } from "./Hooks/TasksContext";
-import MainLayout from "./Pages/main/MainLayout";
+import MainLayout from "./modules/marketing/MainLayout";
 
 // Lazy Loading our pages
-const LandingPage = lazy(() => import("./Pages/LandingPage"));
-const Login = lazy(() => import("./Pages/Auth/Login"));
-const Register = lazy(() => import("./Pages/Auth/Register"));
-const Reviews = lazy(() => import("./Pages/main/Reviews"));
-const Contact = lazy(() => import("./Pages/main/ContactUs"));
-const ErrorSection = lazy(() => import("./Pages/main/NotFound"));
-const TaskHome = lazy(() => import("./Pages/Tasks/TaskHome"));
-const Pricing = lazy(() => import("./Pages/main/Pricing"));
-const Features = lazy(() => import("./Pages/main/Feautures"));
-const AuthLayout = lazy(() => import("./Pages/Auth/AuthLayout"));
+const LandingPage = lazy(() => import("./modules/marketing/pages/LandingPage"));
+const Login = lazy(() => import("./modules/auth/pages/Login"));
+const Register = lazy(() => import("./modules/auth/pages/Register"));
+const Reviews = lazy(() => import("./modules/marketing/pages/Reviews"));
+const Contact = lazy(() => import("./modules/marketing/pages/ContactUs"));
+const ErrorSection = lazy(() => import("./modules/marketing/pages/NotFound"));
+const Tasks = lazy(() => import("./modules/tasks/TaskLayout"));
+const Pricing = lazy(() => import("./modules/marketing/pages/Pricing"));
+const Features = lazy(() => import("./modules/marketing/pages/Feautures"));
+const AuthLayout = lazy(() => import("./modules/auth/AuthLayout"));
 
 const Router = () => {
   const routes = [
@@ -47,11 +45,7 @@ const Router = () => {
     },
     {
       path: "/auth",
-      element: (
-        <UserProvider>
-          <AuthLayout />
-        </UserProvider>
-      ),
+      element: <AuthLayout />,
       children: [
         {
           path: "login",
@@ -69,11 +63,7 @@ const Router = () => {
     },
     {
       path: "/tasks",
-      element: (
-        <TasksProvider>
-          <TaskHome />
-        </TasksProvider>
-      ),
+      element: <Tasks />,
     },
   ];
   const routesModule = createBrowserRouter(routes);

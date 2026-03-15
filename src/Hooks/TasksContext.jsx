@@ -1,5 +1,5 @@
 import { useState, useContext, createContext } from "react";
-import useToastMessage from "../libs/useToastMsg";
+import useToastMessage from "../shared/store/libs/useToastMsg";
 
 const TaskContext = createContext();
 
@@ -24,7 +24,7 @@ export function TasksProvider({ children }) {
 
   async function fetchTasks() {
     if (!token()) {
-      window.location.href = "/auth/login";
+      // window.location.href = "/auth/login";
       toastError("Login required");
     }
 
@@ -44,8 +44,6 @@ export function TasksProvider({ children }) {
       if (response.ok) {
         setTasks(data.tasks);
         toastSuccess("Tasks loaded");
-      } else {
-        toastError(data.message || "Failed to load tasks");
       }
     } catch (err) {
       console.error(err);

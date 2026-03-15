@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
-import { ThemeFather } from "./Contexts/ThemeContext";
 import App from "./App";
 import "./index.css";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
+export const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <ThemeFather>
+  <QueryClientProvider client={queryClient}>
     <App />
-  </ThemeFather>
+  </QueryClientProvider>,
 );

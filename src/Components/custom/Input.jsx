@@ -19,6 +19,7 @@ export const CustomInput = ({
         type={type}
         value={value}
         onChange={onChange}
+        required
       />
     </motion.div>
   );
