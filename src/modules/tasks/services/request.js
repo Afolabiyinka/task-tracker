@@ -1,8 +1,7 @@
 import { useToken } from "../../auth/store/useToken";
+const token = useToken.getState().token;
 
 async function addTask(payload) {
-  const token = useToken.getState().token;
-
   const res = await fetch(
     "https://taskmaster-project-hi5d.onrender.com/tasks",
     {
@@ -19,4 +18,19 @@ async function addTask(payload) {
   return data;
 }
 
-export { addTask };
+async function deleteTask(id) {
+  const res = await fetch(
+    `https://taskmaster-project-hi5d.onrender.com/tasks/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+
+  const data = await res.json();
+  return data;
+}
+
+export { addTask, deleteTask };

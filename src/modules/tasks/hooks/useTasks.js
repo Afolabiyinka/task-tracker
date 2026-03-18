@@ -3,8 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useToken } from "../../auth/store/useToken";
 
 export const useTasks = () => {
-  const { toastError, toastSuccess, toastLoading, toastWarning } =
-    useToastMessage();
+  const { toastError } = useToastMessage();
 
   const token = useToken.getState().token;
 
@@ -12,6 +11,7 @@ export const useTasks = () => {
     data: tasks = [],
     isLoading: loading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
@@ -26,12 +26,15 @@ export const useTasks = () => {
           },
         );
         const data = await res.json();
+
+        if (!data.ok) {
+        }
         return data.tasks;
       } catch (err) {
-        toastError("Failed to fetch tasks");
+        console.log(err);
       }
     },
   });
 
-  return { error, tasks, loading };
+  return { error, tasks, loading, refetch };
 };

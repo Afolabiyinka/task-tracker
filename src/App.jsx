@@ -2,7 +2,6 @@ import { Suspense, useEffect } from "react";
 import Router from "./Routes";
 import { Toaster } from "sonner";
 import LoadingContainer from "./Components/loader/LoadingContainer";
-import Footer from "./modules/marketing/pages/Footer";
 import { useTheme } from "./shared/store/useTheme";
 function App() {
   const { theme } = useTheme();
@@ -23,7 +22,6 @@ function App() {
         <Router />
       </Suspense>
       <Toaster position="top-right" />
-      <Footer />
     </div>
   );
 }

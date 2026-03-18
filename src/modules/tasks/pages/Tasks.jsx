@@ -3,16 +3,21 @@ import AddTask from "../components/AddTask";
 import Task from "../components/Task";
 import { useTasks } from "../hooks/useTasks";
 import LoadingContainer from "../../../Components/loader/LoadingContainer";
+import CustomBtn from "../../../Components/custom/CustomBtn";
+import { RefreshCcw } from "lucide-react";
 
 const Tasks = () => {
-  const { error, loading, tasks } = useTasks();
+  const { error, loading, tasks, refetch } = useTasks();
 
   let tasksText = tasks.length === 1 ? "task" : "tasks";
 
   if (error) {
     return (
-      <div className="w-full h-full flex items-center justify-center">
-        <p className="text-red-500 text-lg">{error}</p>
+      <div className="w-full h-full flex flex-col space-y-4 items-center justify-center">
+        <p className="text-red-500 text-2xl">Failed to fetch tasks</p>
+        <CustomBtn onClick={() => refetch()} icon={RefreshCcw}>
+          Retry
+        </CustomBtn>
       </div>
     );
   }
@@ -22,7 +27,7 @@ const Tasks = () => {
   }
 
   return (
-    <div className="w-full h-full rounded-2xl overflow-y-scroll p-1">
+    <div className="w-full  rounded-2xl overflow-y-scroll p-1  h-full">
       <div className="flex md:flex-row flex-col w-full justify-between md:items-center p-1 gap-1 mb-3">
         <h1 className="font-bold text-2xl md:ml-5">
           You have ( {tasks.length} ) {tasksText} pending

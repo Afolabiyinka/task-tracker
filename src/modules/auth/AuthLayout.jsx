@@ -1,5 +1,4 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const AuthLayout = () => {
   const storedUser = localStorage.getItem("Tm-token");
@@ -8,7 +7,7 @@ const AuthLayout = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen w-full border">
       <Outlet />
     </div>
   );

@@ -1,6 +1,15 @@
 import * as React from "react";
 import { IconButton, Typography, Navbar } from "@material-tailwind/react";
-import { Home, X, Mail, CircleCheck, DollarSign, Menu } from "lucide-react";
+import {
+  Home,
+  X,
+  Mail,
+  CircleCheck,
+  DollarSign,
+  Menu,
+  CheckSquare,
+  LogIn,
+} from "lucide-react";
 // import tmLogo from "../../../Assets/favicon-32x32.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -52,11 +61,12 @@ export default function DarkNavbar() {
       <div className="flex items-center">
         <a
           href="/"
-          className="ml-2 mr-6 flex text-2xl items-center gap-1  capitalize"
+          className="ml-2 mr-6 flex text-2xl  font-semibold items-center gap-1  capitalize"
           onClick={() => setOpenNav(false)}
         >
           {/* <img src={tmLogo} alt="Logo" className="rounded-lg object-cover" /> */}
-          Task Manager
+          <CheckSquare className="stroke-[2px]" />
+          Better Tasks
         </a>
         <hr className="ml-1 mr-1.5 hidden h-5 w-px border-l border-t-0 border-surface/25 lg:block dark:border-surface" />
         <div className="hidden lg:block">
@@ -65,6 +75,7 @@ export default function DarkNavbar() {
 
         <span className="ease-in-out hidden lg:ml-auto lg:inline-block">
           <CustomBtn
+            icon={LogIn}
             children={`Log in`}
             onClick={() => navigate("/auth/login")}
           />

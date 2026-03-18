@@ -5,8 +5,7 @@ import { addTask } from "../services/request";
 import { queryClient } from "../../../main";
 
 export const useAddTasks = () => {
-  const { toastError, toastSuccess, toastLoading, toastWarning } =
-    useToastMessage();
+  const { toastSuccess } = useToastMessage();
   const [taskInputData, setTaskInputData] = useState({
     title: "",
     priority: "low",
